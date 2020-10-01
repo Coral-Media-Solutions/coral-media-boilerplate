@@ -1,7 +1,13 @@
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../src/App/Controller/
     type: annotation
 
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+
+coral_media_framework:
+    resource: '@CoralMediaFrameworkBundle/Resources/config/routes.yaml'
+
+coral_media_security:
+    resource: '@CoralMediaSecurityBundle/Resources/config/routes.yaml'

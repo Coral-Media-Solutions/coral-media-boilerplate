@@ -1,0 +1,6 @@
+controllers:
+    resource: ../../Controller/
+    type: annotation
+api_token_check:
+    path: /security/api/login
+    methods: ['POST']

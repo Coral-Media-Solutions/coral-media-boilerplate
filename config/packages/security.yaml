@@ -1,15 +1,63 @@
 security:
+    encoders:
+        CoralMedia\Bundle\SecurityBundle\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        coral_media_user_provider:
+            entity:
+                class: CoralMedia\Bundle\SecurityBundle\Entity\User
+                property: email
+        jwt:
+            lexik_jwt: ~
+
+    # Experimental feature for Security
+    enable_authenticator_manager: true
+
+    # Firewalls config
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        api_token:
+            pattern: ^/api/
+            stateless: true
+            provider: jwt
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+        api_login:
+            pattern:  ^/security/api/login
+            provider: coral_media_user_provider
+            stateless: true
+            json_login:
+                check_path:               api_token_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+
         main:
-            anonymous: true
+            #anonymous: true
             lazy: true
-            provider: users_in_memory
+            provider: coral_media_user_provider
+            guard:
+                authenticators:
+                    - CoralMedia\Bundle\SecurityBundle\Security\Authenticator\LoginFormAuthenticator
+            logout:
+                path: coral_media_logout
+                # where to redirect after logout
+                # target: app_any_route
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -20,5 +68,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: '^/security/login', roles: PUBLIC_ACCESS }
+        - { path: '^/security/api/login', roles: PUBLIC_ACCESS }
+        - { path: '^/api', roles: ROLE_API_USER }
+        - { path: '^/(.+)', roles: IS_AUTHENTICATED_FULLY }
