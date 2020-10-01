@@ -20,4 +20,5 @@ return [
     CoralMedia\Bundle\FrameworkBundle\CoralMediaFrameworkBundle::class => ['all' => true],
     CoralMedia\Bundle\SecurityBundle\CoralMediaSecurityBundle::class => ['all' => true],
     CoralMedia\Bundle\ApiBundle\CoralMediaApiBundle::class => ['all' => true],
+    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
 ];
