@@ -1,0 +1,11 @@
+coral_media_framework:
+    resource: '@CoralMediaFrameworkBundle/Resources/config/routes.yaml'
+
+coral_media_security:
+    resource: '@CoralMediaSecurityBundle/Resources/config/routes.yaml'
+
+coral_media_api:
+    resource: '@CoralMediaApiBundle/Resources/config/routes.yaml'
+
+coral_media_demo:
+    resource: '@CoralMediaDemoBundle/Resources/config/routes.yaml'
