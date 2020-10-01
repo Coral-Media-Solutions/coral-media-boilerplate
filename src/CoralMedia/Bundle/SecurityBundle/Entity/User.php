@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ApiResource()
+ * @ApiResource(routePrefix="/security")
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User extends \CoralMedia\Component\Security\Model\User implements UserInterface
