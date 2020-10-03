@@ -39,13 +39,13 @@ security:
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
 
-        main:
-            #anonymous: true
+        default:
+            # anonymous: true
             lazy: true
             provider: coral_media_user_provider
             guard:
                 authenticators:
-                    - CoralMedia\Bundle\SecurityBundle\Security\Authenticator\LoginFormAuthenticator
+                    - CoralMedia\Bundle\SecurityBundle\Security\Authenticator\SimpleLoginFormAuthenticator
             logout:
                 path: coral_media_logout
                 # where to redirect after logout
