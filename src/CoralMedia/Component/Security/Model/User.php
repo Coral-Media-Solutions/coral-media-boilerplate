@@ -38,6 +38,11 @@ abstract class User implements UserInterface
      */
     protected $lastName;
 
+    /**
+     * @var string
+     */
+    private $plainPassword = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +154,24 @@ abstract class User implements UserInterface
     public function setLastName(string $lastName): User
     {
         $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     * @return User
+     */
+    public function setPlainPassword(string $plainPassword): User
+    {
+        $this->plainPassword = $plainPassword;
         return $this;
     }
 

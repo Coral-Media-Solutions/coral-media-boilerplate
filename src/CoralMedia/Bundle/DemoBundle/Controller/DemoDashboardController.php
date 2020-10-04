@@ -2,6 +2,7 @@
 
 namespace CoralMedia\Bundle\DemoBundle\Controller;
 
+use CoralMedia\Bundle\SecurityBundle\Controller\UserCrudController;
 use CoralMedia\Bundle\SecurityBundle\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -28,6 +29,7 @@ class DemoDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('User', 'fa fa-user', User::class);
+        yield MenuItem::linkToCrud('User', 'fa fa-user', User::class)
+            ->setController(UserCrudController::class);
     }
 }
