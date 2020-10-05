@@ -16,6 +16,11 @@ security:
     # Experimental feature for Security
     enable_authenticator_manager: true
 
+    # Hierarchical Roles https://symfony.com/doc/current/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_API]
+
     # Firewalls config
     firewalls:
         dev:
