@@ -21,6 +21,7 @@ class SecurityFixtures extends Fixture
             '$argon2id$v=19$m=65536,t=4,p=1$+HmYuIIVBcP5tXBD2IX9DQ$CLaBRiRCb9VxAiOJMkIGETacD7AA4x3L5YkVR8RE1/w'
         );
 
+        $this->addReference(sha1($user->getEmail()), $user);
         $manager->persist($user);
 
         $manager->flush();

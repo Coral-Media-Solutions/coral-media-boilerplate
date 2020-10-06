@@ -9,3 +9,6 @@ coral_media_api:
 
 coral_media_demo:
     resource: '@CoralMediaDemoBundle/Resources/config/routes.yaml'
+
+coral_media_web_deskto:
+    resource: '@CoralMediaWebDesktopBundle/Resources/config/routes.yaml'

@@ -1,4 +1,8 @@
-var Encore = require('@symfony/webpack-encore');
+let Encore = require('@symfony/webpack-encore');
+
+const desktopConfig = require('./src/CoralMedia/Bundle/WebDesktopBundle/Resources/webpack.config');
+desktopConfig.name = 'desktopConfig';
+Encore.reset();
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -71,4 +75,6 @@ Encore
     //.addEntry('admin', './assets/admin.js')
 ;
 
-module.exports = Encore.getWebpackConfig();
+const appConfig = Encore.getWebpackConfig();
+
+module.exports = [desktopConfig, appConfig];

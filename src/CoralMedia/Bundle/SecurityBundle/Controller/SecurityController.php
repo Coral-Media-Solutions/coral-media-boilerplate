@@ -27,7 +27,12 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
         try {
-
+            if ($kernel->getBundle('CoralMediaWebDesktopBundle')) {
+                return $this->render(
+                    '@CoralMediaWebDesktop/security/login.html.twig',
+                    ['last_username' => $lastUsername, 'error' => $error]
+                );
+            }
             if ($kernel->getBundle('EasyAdminBundle')) {
                 return $this->_renderEasyAdminLoginForm($error, $lastUsername);
             }

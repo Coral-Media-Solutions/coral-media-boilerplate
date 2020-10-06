@@ -19,6 +19,7 @@ class DemoFixtures extends Fixture
             '$argon2id$v=19$m=65536,t=4,p=1$h/FMpajPUDkg1eghvp56wQ$2OTxMJCNFz7SSmbxfhy/yF7Eccqvk/OPOnhLqaStqeg'
         );
 
+        $this->addReference(sha1($user->getEmail()), $user);
         $manager->persist($user);
 
         $manager->flush();
