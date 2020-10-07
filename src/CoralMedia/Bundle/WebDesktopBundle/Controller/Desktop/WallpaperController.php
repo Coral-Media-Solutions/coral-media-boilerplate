@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WallpaperController extends AbstractDesktopController
 {
     /**
-     * @Route("/wallpaper/get_all", name="desktop_wallpaper_get_all")
+     * @Route("/wallpapers", name="desktop_wallpaper_get_all")
      */
     public function getAll()
     {

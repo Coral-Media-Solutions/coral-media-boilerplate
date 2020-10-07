@@ -46,7 +46,7 @@ QoDesk.QoPreferences.Grid = Ext.extend(Ext.grid.GridPanel, {
                 , reader: reader
                 , sortInfo: {field: 'name', direction: 'ASC'}
                 , url: config.ownerModule.app.connection +
-                    (this.mode === 'themes' ? '/theme' : '/wallpaper') + '/get_all'
+                    (this.mode === 'themes' ? '/themes' : '/wallpapers')
 
             })
             , view: new Ext.ux.grid.ExplorerView({

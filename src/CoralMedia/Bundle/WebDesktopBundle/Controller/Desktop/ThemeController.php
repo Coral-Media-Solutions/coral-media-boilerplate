@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ThemeController extends AbstractDesktopController
 {
     /**
-     * @Route("/theme/get_all", name="desktop_theme_get_all")
+     * @Route("/themes", name="desktop_theme_get_all")
      */
     public function getAll()
     {
