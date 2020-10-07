@@ -48,6 +48,18 @@ fixtures:
             startMenuToolPath: ~
             hasResources: false
 
+        -   jsid: 'demo-charts'
+            type: 'demo/charts'
+            label: 'Charts Window'
+            className: 'QoDesk.ChartsWindow'
+            iconCls: 'layout-icon'
+            shortcutIconCls: 'demo-layout-shortcut'
+            tooltip: '<b>Charts Window</b><br />Charts layout window'
+            startMenuPath: '/Demo'
+            contextMenuPath: ~
+            startMenuToolPath: ~
+            hasResources: false
+
         -   jsid: 'demo-tab'
             type: 'demo/tab'
             label: 'Tab Window'

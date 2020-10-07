@@ -34,5 +34,10 @@ Ext.app.Addons = {
         id: 'explorer-view',
         files: ['addons/explorer-view/ExplorerView', 'addons/explorer-view/GroupingExplorerView'],
         hasResources: true
+    },
+    'chart-js': {
+        id: 'chart-js',
+        files: ['addons/chart-js/Ext.ux.Chartjs'],
+        hasResources: false
     }
 };

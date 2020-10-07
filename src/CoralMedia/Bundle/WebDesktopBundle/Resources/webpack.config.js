@@ -11,6 +11,10 @@ Encore
     .setPublicPath('/build')
     .addEntry('app', baseDir + 'app.js')
     .copyFiles({
+        from: './node_modules/chart.js/dist',
+        to: 'desktop/chart.js/[path][name].[ext]'
+    })
+    .copyFiles({
             from: baseDir + 'desktop',
             // to: 'desktop/[path][name].[hash:8].[ext]'
             to: 'desktop/[path][name].[ext]'
