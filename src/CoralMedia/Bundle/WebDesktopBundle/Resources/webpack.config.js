@@ -4,26 +4,26 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
-let baseDir = './src/CoralMedia/Bundle/WebDesktopBundle/Resources/'
+let baseDir = './src/CoralMedia/Bundle/WebDesktopBundle/Resources/public/'
 
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
-    .addEntry('app', baseDir + 'public/app.js')
+    .addEntry('app', baseDir + 'app.js')
     .copyFiles({
-            from: baseDir + 'public/desktop',
+            from: baseDir + 'desktop',
             // to: 'desktop/[path][name].[hash:8].[ext]'
             to: 'desktop/[path][name].[ext]'
         }
     )
     .copyFiles({
-            from: baseDir + 'public/ext-3.4.1',
+            from: baseDir + 'ext-3.4.1',
             // to: 'ext-3.4.1/[path][name].[hash:8].[ext]'
             to: 'ext-3.4.1/[path][name].[ext]'
         }
     )
     .copyFiles({
-            from: baseDir + 'public/requirejs',
+            from: baseDir + 'requirejs',
             // to: 'ext-3.4.1/[path][name].[hash:8].[ext]'
             to: 'requirejs/[path][name].[ext]'
         }
@@ -36,5 +36,6 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     })
+const webpackConfig = Encore.getWebpackConfig();
 
-module.exports = Encore.getWebpackConfig();
+module.exports = webpackConfig;
