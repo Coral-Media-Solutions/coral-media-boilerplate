@@ -10,5 +10,9 @@ coral_media_api:
 coral_media_demo:
     resource: '@CoralMediaDemoBundle/Resources/config/routes.yaml'
 
-coral_media_web_deskto:
+coral_media_web_desktop:
     resource: '@CoralMediaWebDesktopBundle/Resources/config/routes.yaml'
+
+coral_media_default:
+    path: /
+    defaults: { _controller: CoralMedia\Bundle\WebDesktopBundle\Controller\Desktop\DesktopController::index }

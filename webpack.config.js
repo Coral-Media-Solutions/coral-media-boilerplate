@@ -76,5 +76,6 @@ Encore
 ;
 
 const appConfig = Encore.getWebpackConfig();
+appConfig.name = 'appConfig';
 
 module.exports = [desktopConfig, appConfig];
