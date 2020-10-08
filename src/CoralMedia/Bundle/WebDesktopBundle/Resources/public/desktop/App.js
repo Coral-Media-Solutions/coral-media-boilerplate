@@ -111,6 +111,8 @@ Ext.extend(Ext.app.App, Ext.util.Observable, {
      */
     requestQueue: [],
 
+    apiToken: null,
+
     init: Ext.emptyFn,
 
     initApp: function () {
@@ -206,9 +208,9 @@ Ext.extend(Ext.app.App, Ext.util.Observable, {
         return true;
     },
 
-    loadAddonsForModule: function(module) {
-        Ext.each(module.addons, function(item, index) {
-            requirejs(Ext.app.Addons[item].files, function(){
+    loadAddonsForModule: function (module) {
+        Ext.each(module.addons, function (item, index) {
+            requirejs(Ext.app.Addons[item].files, function () {
                 if (Ext.app.Addons[item].hasResources === true) {
                     let cssFile = requirejs.toUrl('addons/') + item + '/resources/styles.css';
                     Ext.util.CSS.swapStyleSheet('css-' + item, cssFile);
