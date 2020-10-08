@@ -41,7 +41,7 @@ abstract class User implements UserInterface
     /**
      * @var string
      */
-    private $plainPassword = null;
+    protected $plainPassword = null;
 
     public function getId(): ?int
     {
