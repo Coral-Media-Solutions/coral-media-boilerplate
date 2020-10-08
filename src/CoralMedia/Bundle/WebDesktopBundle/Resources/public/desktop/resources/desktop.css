@@ -9,6 +9,17 @@ html, body {
     overflow: hidden;
 }
 
+a:focus, a:active,
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner, .x-form .x-form-item,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 0;
+    outline: 0;
+}
+
 /* icons */
 .x-btn-medium .icon-qwikioffice {
     background-image: url(images/default/icons/qWikiOffice24x24.png) !important;
@@ -365,8 +376,9 @@ ul.ux-quickstart-strip li.ux-quickstart-edge {
 }
 
 .ux-shortcut-item button {
-    font-size: 11px !important;
-    width: 100%;
+    font: 12px arial,tahoma,verdana,helvetica;
+    color: #FFF;
+    width: 110%;
 }
 
 /* start menu */
@@ -444,12 +456,12 @@ ul.ux-quickstart-strip li.ux-quickstart-edge {
 .ux-startmenu .ux-menu-app {
     border-right: 1px solid #f0f0f0;
     float: left;
-    width: 60%;
+    width: 49%;
 }
 
 .ux-startmenu .ux-menu-tool {
     float: left;
-    width: 39%;
+    width: 49%;
 }
 
 .ux-startmenu-tl .ux-startmenu-header {
@@ -516,4 +528,13 @@ ul.ux-quickstart-strip li.ux-quickstart-edge {
 
 .ux-taskbuttons-scroller-right {
     background-image: url(images/default/taskbar/scroll-right.gif);
+}
+
+.prev-link-item-icon {
+    float: left;
+}
+
+.prev-link-item-txt {
+    float: left;
+    padding-top: 10px;
 }

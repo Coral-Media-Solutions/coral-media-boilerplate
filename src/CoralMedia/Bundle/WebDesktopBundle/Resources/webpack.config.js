@@ -15,6 +15,16 @@ Encore
         to: 'desktop/chart.js/[path][name].[ext]'
     })
     .copyFiles({
+        from: './node_modules/@fortawesome/fontawesome-free/webfonts/',
+        // relative to the output dir
+        to: 'font-awesome/webfonts/[name].[ext]'
+    })
+    .copyFiles({
+        from: './node_modules/@fortawesome/fontawesome-free/css/',
+        // relative to the output dir
+        to: 'font-awesome/css/[name].[ext]'
+    })
+    .copyFiles({
             from: baseDir + 'desktop',
             // to: 'desktop/[path][name].[hash:8].[ext]'
             to: 'desktop/[path][name].[ext]'

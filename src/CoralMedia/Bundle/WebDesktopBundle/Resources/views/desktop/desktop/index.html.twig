@@ -5,6 +5,7 @@
 {#    <link rel="stylesheet" type="text/css" href="{{ asset('build/desktop/resources/css/xtheme-blue.css') }}" />#}
     <link rel="stylesheet" type="text/css" href="{{ asset('build/desktop/resources/desktop.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('build/desktop/resources/icons.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/desktop/resources/oxygen-icons.css') }}" />
 
     <script type="text/javascript" src="{{ asset('build/requirejs/require.js') }}"></script>
 {% endblock %}
@@ -40,7 +41,7 @@
             'desktop/chart.js/Chart',
         ], function(){
             require(['domReady!'], function (doc) {
-                Ext.namespace('Ext.ux', 'App.Desktop', 'QoDesk');
+                Ext.namespace('Ext.ux', 'App.Desktop', 'QoDesk', 'CoralMedia');
 
                 App.Desktop = new Ext.app.App({
                     init: function () {
