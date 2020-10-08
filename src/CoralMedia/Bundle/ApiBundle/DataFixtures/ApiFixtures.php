@@ -14,7 +14,7 @@ class ApiFixtures extends Fixture
         $user->setFirstName('Api')
             ->setLastName('User')
             ->setEmail('api@example.com')
-            ->setRoles(['ROLE_API_USER']);
+            ->setRoles(['ROLE_API']);
         $user->setPassword(
             '$argon2id$v=19$m=65536,t=4,p=1$8zj5UQcjEhgA6H8sjiJWzw$yGX2aEDE6/m7O3t5aiDgnuXacWp5Sto11+/vuqsVWeg'
         );
