@@ -39,5 +39,10 @@ Ext.app.Addons = {
         id: 'chart-js',
         files: ['addons/chart-js/Ext.ux.Chartjs'],
         hasResources: false
+    },
+    'paging-toolbar': {
+        id: 'paging-toolbar',
+        files: ['addons/paging-toolbar/Ext.ux.PagingToolbar'],
+        hasResources: false
     }
 };
