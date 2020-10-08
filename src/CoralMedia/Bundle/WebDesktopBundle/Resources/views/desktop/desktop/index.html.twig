@@ -28,6 +28,7 @@
         });
         requirejs([
             'desktop/App',
+            'desktop/Api',
             'desktop/Addons',
             'desktop/Desktop',
             'desktop/Module',
@@ -48,12 +49,6 @@
                         let self = this;
                         Ext.BLANK_IMAGE_URL = requirejs.toUrl('sencha/') + 'resources/images/default/s.gif';
                         Ext.QuickTips.init();
-
-                        Ext.Ajax.on('beforerequest', function(conn, options){
-                            conn.defaultHeaders = {
-                                'Authorization': 'Bearer ' + self.apiToken
-                            };
-                        });
                     },
 
                     apiToken: '{{ app.request.session.get('Bearer')|raw }}',

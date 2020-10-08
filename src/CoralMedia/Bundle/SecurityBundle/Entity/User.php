@@ -20,6 +20,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 class User extends \CoralMedia\Component\Security\Model\User implements UserInterface
 {
     /**
+     * @Groups({"user:read", "user:write"})
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
