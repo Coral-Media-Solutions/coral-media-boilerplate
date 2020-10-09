@@ -1,5 +1,5 @@
-Ext.ns('Ext.ux');
-Ext.ux.PagingToolbar = Ext.extend(Ext.PagingToolbar, {
+Ext.ns('Hydra');
+Hydra.PagingToolbar = Ext.extend(Ext.PagingToolbar, {
 
     tmpCursor: 0,
 
@@ -33,4 +33,4 @@ Ext.ux.PagingToolbar = Ext.extend(Ext.PagingToolbar, {
         }
     }
 });
-Ext.reg('ux-paging', Ext.ux.PagingToolbar);
+Ext.reg('hydra-paging', Hydra.PagingToolbar);

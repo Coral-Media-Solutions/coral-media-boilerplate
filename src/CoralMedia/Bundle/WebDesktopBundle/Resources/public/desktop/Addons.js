@@ -40,9 +40,12 @@ Ext.app.Addons = {
         files: ['addons/chart-js/Ext.ux.Chartjs'],
         hasResources: false
     },
-    'paging-toolbar': {
-        id: 'paging-toolbar',
-        files: ['addons/paging-toolbar/Ext.ux.PagingToolbar'],
+    'hydra-api': {
+        id: 'hydra-api',
+        files: [
+            'addons/hydra-api/Hydra.PagingToolbar',
+            'addons/hydra-api/Hydra.form.Action.JsonSubmit',
+        ],
         hasResources: false
     }
 };
