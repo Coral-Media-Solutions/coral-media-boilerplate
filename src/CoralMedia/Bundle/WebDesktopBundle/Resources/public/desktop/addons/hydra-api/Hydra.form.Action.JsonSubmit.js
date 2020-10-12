@@ -10,12 +10,14 @@ Hydra.form.Action.JsonSubmit = function(form, options) {
 Ext.extend(Hydra.form.Action.JsonSubmit, Ext.form.Action.Submit, {
     type: 'jsonSubmit',
 
+    overwriteParams: {},
+
     run : function() {
         let o = this.options;
         let method = this.getMethod();
         let isGet = method == 'GET';
         if (o.clientValidation === false || this.form.isValid()) {
-            let encodedParams = Ext.encode(this.form.getValues());
+            let encodedParams = Ext.encode(Ext.apply(this.form.getValues(), this.overwriteParams));
 
             Ext.Ajax.request(Ext.apply(this.createCallback(o), {
                 url:this.getUrl(isGet),
@@ -23,7 +25,7 @@ Ext.extend(Hydra.form.Action.JsonSubmit, Ext.form.Action.Submit, {
                 waitMsg: "Please wait while saving",
                 waitTitle: "Please wait",
                 headers: o.headers || {'Content-Type': 'application/json'},
-                params: String.format('{0}', Ext.encode(this.form.getValues())),
+                params: o.params || String.format('{0}', encodedParams),
                 isUpload: this.form.fileUpload
             }));
             if (o.submitEmptyText === false) {
