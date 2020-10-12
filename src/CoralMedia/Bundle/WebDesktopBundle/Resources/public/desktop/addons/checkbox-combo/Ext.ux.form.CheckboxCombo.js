@@ -164,7 +164,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
    // private
    initList: function () {
       if (!this.list) {
-         var cls = 'x-checkboxcombo-list',
+         let cls = 'x-checkboxcombo-list',
             listParent = Ext.getDom(this.getListParent() || Ext.getBody()),
             zindex = parseInt(Ext.fly(listParent).getStyle('z-index'), 10);
 
@@ -183,7 +183,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
             zindex: (zindex || 12000) + 5
          });
 
-         var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
+         let lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
          this.list.setWidth(lw);
          this.list.swallowEvent('mousewheel');
          this.assetHeight = 0;
@@ -290,7 +290,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
          doRelay: function (e, h, hname) {
             if (hname == 'down' || this.scope.isExpanded()) {
                // this MUST be called before ComboBox#fireKey()
-               var relay = Ext.KeyNav.prototype.doRelay.apply(this, arguments);
+               let relay = Ext.KeyNav.prototype.doRelay.apply(this, arguments);
                if (!Ext.isIE && Ext.EventManager.useKeydown) {
                   // call Combo#fireKey() for browsers which use keydown event (except IE)
                   this.scope.fireKey(e);
@@ -336,7 +336,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    doResize: function (w) {
       if (!Ext.isDefined(this.listWidth)) {
-         var lw = Math.max(w, this.minListWidth);
+         let lw = Math.max(w, this.minListWidth);
          this.list.setWidth(lw);
          this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
       }
@@ -364,7 +364,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
          return;
       }
 
-      // Setup a temp var so we can recheck on load
+      // Setup a temp let so we can recheck on load
       this.checkboxValues = this.cbgroup.getValue();
 
       this.removeCheckboxes();
@@ -380,7 +380,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
       if (this.checkboxValues) {
          Ext.each(this.checkboxValues, function (v) {
             if (this.valueField) {
-               var r = this.findRecord(this.valueField, v.inputValue);
+               let r = this.findRecord(this.valueField, v.inputValue);
                if (r) {
                   r.checked = true;
                }
@@ -399,15 +399,15 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // inherit docs
    getName: function () {
-      var hf = this.hiddenField;
+      let hf = this.hiddenField;
       return hf && hf.name ? hf.name : this.hiddenName || Ext.ux.form.CheckboxCombo.superclass.getName.call(this);
    },
 
    // private
    assertValue: function () {
-      var checkboxValues = this.cbgroup.getValue();
+      let checkboxValues = this.cbgroup.getValue();
       if (checkboxValues) {
-         var vals = [];
+         let vals = [];
          Ext.each(checkboxValues, function (cb) {
             vals.push(cb.inputValue);
          });
@@ -430,11 +430,11 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
          vals = vals.split(',');
       }
 
-      var text = [];
+      let text = [];
 
       Ext.each(vals, function (v) {
          if (this.valueField) {
-            var r = this.findRecord(this.valueField, v);
+            let r = this.findRecord(this.valueField, v);
             if (r) {
                text.push(r.data[this.displayField]);
                r.checked = true;
@@ -479,7 +479,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // private
    findRecord: function (prop, value) {
-      var record;
+      let record;
       if (this.store.getCount() > 0) {
          record = this.store.getAt(this.store.find(prop, value));
          return (record ? record : false);
@@ -493,7 +493,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // private
    onListOver: function (e, t) {
-      var target = e.getTarget('div.x-form-item');
+      let target = e.getTarget('div.x-form-item');
       if (target) {
          target = Ext.get(target);
          target.radioClass('x-checkboxcombo-item-over');
@@ -506,10 +506,10 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
          return;
       }
 
-      var target = e.getTarget('div.x-form-item');
+      let target = e.getTarget('div.x-form-item');
       if (target) {
          target = Ext.get(target);
-         var cb = target.child('input');
+         let cb = target.child('input');
          cb = Ext.getCmp(cb.id);
          cb.setValue(cb.getValue() ? false : true);
       }
@@ -517,10 +517,10 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // private
    onListEnter: function (e, t) {
-      var target = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
+      let target = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
       if (target) {
          target = Ext.get(target);
-         var cb = target.child('input');
+         let cb = target.child('input');
          cb = Ext.getCmp(cb.id);
          cb.setValue(cb.getValue() ? false : true);
       }
@@ -529,7 +529,7 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
    // private
    restrictHeight: function () {
       this.innerList.dom.style.height = '';
-      var inner = this.innerList.dom,
+      let inner = this.innerList.dom,
          pad = this.list.getFrameWidth('tb') + this.assetHeight,
          h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight),
          ha = this.getPosition()[1] - Ext.getBody().getScroll().top,
@@ -555,9 +555,9 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // private
    selectNext: function () {
-      var ct = this.store.getCount();
+      let ct = this.store.getCount();
       if (ct > 0) {
-         var el = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
+         let el = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
          if (!el) {
             this.innerList.child('.x-form-item').radioClass('x-checkboxcombo-item-over');
          } else {
@@ -568,9 +568,9 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
    // private
    selectPrev: function () {
-      var ct = this.store.getCount();
+      let ct = this.store.getCount();
       if (ct > 0) {
-         var el = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
+         let el = Ext.DomQuery.selectNode('.x-checkboxcombo-item-over', this.list.dom);
          if (!el) {
             this.innerList.child('.x-form-item').radioClass('x-checkboxcombo-item-over');
          } else {
@@ -660,11 +660,11 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
 
       this.cbgroup.items.items[0].destroy();
 
-      var col = this.cbgroup.panel.items.get(0);
+      let col = this.cbgroup.panel.items.get(0);
 
       // Add new checkboxes from store
       Ext.each(this.store.data.items, function (rec) {
-         var checkbox = new Ext.form.Checkbox({
+         let checkbox = new Ext.form.Checkbox({
             name: rec.data.id + '-checkbox',
             boxLabel: rec.data[this.displayField],
             inputValue: rec.data[this.valueField],
@@ -706,11 +706,11 @@ Ext.ux.form.CheckboxCombo = Ext.extend(Ext.form.TriggerField, {
          value = value.split(',');
       }
 
-      var text = [];
+      let text = [];
 
       Ext.each(value, function (v) {
          if (this.valueField) {
-            var r = this.findRecord(this.valueField, v);
+            let r = this.findRecord(this.valueField, v);
             if (r) {
                text.push(r.data[this.displayField]);
             }

@@ -45,7 +45,18 @@ Ext.app.Addons = {
         files: [
             'addons/hydra-api/Hydra.PagingToolbar',
             'addons/hydra-api/Hydra.form.Action.JsonSubmit',
+            'addons/hydra-api/Hydra.grid.GridPanel',
         ],
         hasResources: false
+    },
+    'checkbox-combo': {
+        id:'checkbox-combo',
+        files:['addons/checkbox-combo/Ext.ux.form.CheckboxCombo'],
+        hasResources: true
+    },
+    'superbox-select': {
+        id:'superbox-select',
+        files:['addons/superbox-select/Ext.ux.form.SuperBoxSelect'],
+        hasResources: true
     }
 };
