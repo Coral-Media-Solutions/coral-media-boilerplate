@@ -45,6 +45,7 @@ Ext.app.Addons = {
         files: [
             'addons/hydra-api/Hydra.PagingToolbar',
             'addons/hydra-api/Hydra.form.Action.JsonSubmit',
+            'addons/hydra-api/Hydra.form.FormPanel',
             'addons/hydra-api/Hydra.grid.GridPanel',
         ],
         hasResources: false

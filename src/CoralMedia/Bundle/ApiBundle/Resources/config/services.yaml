@@ -30,6 +30,3 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
-    CoralMedia\Bundle\ApiBundle\DataPersister\UserDataPersister:
-        decorates: 'api_platform.doctrine.orm.data_persister'

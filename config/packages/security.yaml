@@ -77,3 +77,7 @@ security:
         - { path: '^/security/api/login', roles: PUBLIC_ACCESS }
         - { path: '^/api', roles: [ROLE_API, ROLE_USER] }
         - { path: '^/', roles: IS_AUTHENTICATED_FULLY }
+
+    access_decision_manager:
+        strategy: affirmative
+        allow_if_all_abstain: false

@@ -83,3 +83,15 @@ fixtures:
             contextMenuPath: ~
             startMenuToolPath: '/'
             hasResources: true
+
+        -   jsid: 'system-administration'
+            type: 'system/administration'
+            label: 'Control Center'
+            className: 'CoralMedia.Admin'
+            iconCls: 'qo-admin-icon'
+            shortcutIconCls: 'qo-admin-shortcut-icon'
+            tooltip: '<b>Control Center</b><br />Allows you to administer your desktop'
+            startMenuPath: ~
+            contextMenuPath: ~
+            startMenuToolPath: '/'
+            hasResources: true

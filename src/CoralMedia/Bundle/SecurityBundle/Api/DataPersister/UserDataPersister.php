@@ -1,48 +1,45 @@
 <?php
 
 
-namespace CoralMedia\Bundle\ApiBundle\DataPersister;
+namespace CoralMedia\Bundle\SecurityBundle\Api\DataPersister;
 
-
-use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use ApiPlatform\Core\DataPersister\DataPersisterInterface;
 use CoralMedia\Component\Security\Model\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class UserDataPersister implements ContextAwareDataPersisterInterface
+class UserDataPersister implements DataPersisterInterface
 {
 
-    protected $decorated;
+    protected $decoratedDataPersister;
     protected $passwordEncoder;
 
     /**
      * UserDataPersister constructor.
-     * @param ContextAwareDataPersisterInterface $decorated
+     * @param DataPersisterInterface $decoratedDataPersister
      * @param UserPasswordEncoderInterface $passwordEncoder
      */
-    public function __construct(ContextAwareDataPersisterInterface $decorated,
+    public function __construct(DataPersisterInterface $decoratedDataPersister,
                                 UserPasswordEncoderInterface $passwordEncoder)
     {
-        $this->decorated = $decorated;
+        $this->decoratedDataPersister = $decoratedDataPersister;
         $this->passwordEncoder = $passwordEncoder;
     }
 
     /**
      * @param User|UserInterface $data
-     * @param array $context
      * @return bool
      */
-    public function supports($data, array $context = []): bool
+    public function supports($data): bool
     {
-        return $this->decorated->supports($data, $context);
+        return ($data instanceof UserInterface);
     }
 
     /**
      * @param User|UserInterface $data
-     * @param array $context
      * @return object|void
      */
-    public function persist($data, array $context = [])
+    public function persist($data)
     {
         if($data->getPlainPassword()) {
             $data->setPassword(
@@ -50,7 +47,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
             );
             $data->eraseCredentials();
         }
-        return $this->decorated->persist($data, $context);
+        return $this->decoratedDataPersister->persist($data);
     }
 
     /**
@@ -60,6 +57,6 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
      */
     public function remove($data, array $context = [])
     {
-        return $this->decorated->remove($data, $context);
+        return $this->decoratedDataPersister->remove($data);
     }
 }

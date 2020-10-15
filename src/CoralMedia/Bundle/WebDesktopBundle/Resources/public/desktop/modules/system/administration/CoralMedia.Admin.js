@@ -11,6 +11,8 @@ CoralMedia.Admin = Ext.extend(Ext.app.Module, {
         'app/system/administration/lib/CoralMedia.Admin.Nav',
         'app/system/administration/lib/user/CoralMedia.Admin.User.Grid',
         'app/system/administration/lib/user/CoralMedia.Admin.User.Form',
+        'app/system/administration/lib/group/CoralMedia.Admin.Group.Grid',
+        'app/system/administration/lib/group/CoralMedia.Admin.Group.Form'
     ],
     addons: [
         'hydra-api',
@@ -74,6 +76,16 @@ CoralMedia.Admin = Ext.extend(Ext.app.Module, {
         let tab = this.tabPanel.getItem('coral-media-admin-users');
         if(!tab){
             tab = new CoralMedia.Admin.User.Grid({ ownerModule: this });
+            this.openTab(tab);
+        }else{
+            this.tabPanel.setActiveTab(tab);
+        }
+    },
+
+    viewGroups : function(){
+        let tab = this.tabPanel.getItem('coral-media-admin-groups');
+        if(!tab){
+            tab = new CoralMedia.Admin.Group.Grid({ ownerModule: this });
             this.openTab(tab);
         }else{
             this.tabPanel.setActiveTab(tab);

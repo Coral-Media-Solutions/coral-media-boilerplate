@@ -25,6 +25,43 @@ Hydra.grid.GridPanel = Ext.extend(Ext.grid.GridPanel, {
     },
 
     configureToolBar: function() {
+        let self = this;
+        return self.tbar||([
+            {
+                xtype: 'button',
+                iconCls: 'list-add-icon',
+                handler: self.onAddClick,
+                ref:'../addButton',
+                itemId:'addButton',
+                scope: this
+            },
+            {
+                xtype: 'button',
+                iconCls: 'document-edit-icon',
+                handler: self.onEditClick,
+                ref:'../editButton',
+                itemId:'editButton',
+                scope: this,
+                disabled:true
+            },'-',
+            {
+                xtype: 'button',
+                iconCls: 'edit-delete-icon',
+                handler: self.onDeleteClick,
+                ref:'../deleteButton',
+                itemId:'deleteButton',
+                scope: this,
+                disabled: true
+            },'->',
+            {
+                xtype: 'button',
+                iconCls: 'document-export-icon',
+                handler: Ext.emptyFn,
+                ref:'../exportButton',
+                itemId:'exportButton',
+                scope: this
+            }
+        ]);
     },
 
     configureBottomBar: function() {
