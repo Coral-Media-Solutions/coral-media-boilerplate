@@ -16,7 +16,8 @@ CoralMedia.Admin = Ext.extend(Ext.app.Module, {
     ],
     addons: [
         'hydra-api',
-        'superbox-select'
+        'superbox-select',
+        'tooltip-editor'
     ],
 
     actions: null,

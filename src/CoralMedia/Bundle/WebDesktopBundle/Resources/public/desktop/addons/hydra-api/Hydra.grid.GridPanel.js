@@ -65,6 +65,14 @@ Hydra.grid.GridPanel = Ext.extend(Ext.grid.GridPanel, {
     },
 
     configureBottomBar: function() {
+        let self = this;
+        return this.bbar||(
+            new Hydra.PagingToolbar({
+                pageSize: 15,
+                store: self.store,
+                displayInfo: true
+            })
+        );
     },
 
     showMask: function (msg)
@@ -98,23 +106,8 @@ Hydra.grid.GridPanel = Ext.extend(Ext.grid.GridPanel, {
         this.toggleButtons(false);
     },
 
-    setFormContainer: function (action, options) {
-        let self = this;
-        self.formContainer = new Ext.Window(Ext.apply({
-            layout: 'fit',
-            height: 240,
-            width: 320,
-            resizable: false,
-            modal: true,
-            title: action.charAt(0).toUpperCase() +
-                action.slice(1) ,
-            items:[
-                new CoralMedia.Admin.User.Form({
-                    parentGrid: this,
-                    action: action
-                })
-            ]
-        }, options));
+    setFormContainer: function(action, options) {
+        return Ext.emptyFn;
     },
 
     onAddClick:function(button, event)
