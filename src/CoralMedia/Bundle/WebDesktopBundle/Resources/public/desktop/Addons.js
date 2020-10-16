@@ -46,7 +46,7 @@ Ext.app.Addons = {
             'addons/hydra-api/Hydra.PagingToolbar',
             'addons/hydra-api/Hydra.form.Action.JsonSubmit',
             'addons/hydra-api/Hydra.form.FormPanel',
-            'addons/hydra-api/Hydra.grid.GridPanel',
+            'addons/hydra-api/Hydra.grid.GridPanel'
         ],
         hasResources: false
     },
@@ -59,5 +59,10 @@ Ext.app.Addons = {
         id:'superbox-select',
         files:['addons/superbox-select/Ext.ux.form.SuperBoxSelect'],
         hasResources: true
+    },
+    'tooltip-editor': {
+        id: 'tooltip-editor',
+        files: ['addons/tooltip-editor/Ext.ux.TooltipEditor'],
+        hasResources: false
     }
 };

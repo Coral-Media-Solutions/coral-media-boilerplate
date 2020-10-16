@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CoralMedia\Component\Security\Core\Authorization\Voter;
+namespace CoralMedia\Component\Api\Security\Core\Authorization\Voter;
 
 
 use ApiPlatform\Core\DataProvider\PaginatorInterface;
@@ -11,7 +11,7 @@ use Exception;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-class ApiResourceVoter extends Voter
+class ResourceVoter extends Voter
 {
     protected $resourceNameCollection;
     protected $security;
@@ -37,7 +37,7 @@ class ApiResourceVoter extends Voter
     protected function supports(string $attribute, $subject)
     {
         $supportsSubject = ($subject !== null && in_array(get_class($subject), $this->resourceNameCollection)) ||
-            $subject instanceof PaginatorInterface;
+            $subject instanceof PaginatorInterface || $subject instanceof \Generator;
         $supportsAttribute = in_array(
             $attribute, [
                 Security::API_ACTION_GET,

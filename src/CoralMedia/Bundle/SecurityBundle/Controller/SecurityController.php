@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="coral_media_login")
+     * @Route("/security/login", name="coral_media_login")
      * @param AuthenticationUtils $authenticationUtils
      * @param KernelInterface $kernel
      * @return Response
@@ -49,7 +49,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/api/token")
+     * @Route("/security/api/token")
      * @param Request $request
      * @param JWTTokenManagerInterface $jwtTokenManager
      * @return JsonResponse|RedirectResponse
@@ -68,7 +68,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="coral_media_logout")
+     * @Route("/security/logout", name="coral_media_logout")
      */
     public function logout()
     {

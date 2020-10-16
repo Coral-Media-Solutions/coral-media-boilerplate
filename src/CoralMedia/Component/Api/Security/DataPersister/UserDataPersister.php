@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CoralMedia\Bundle\SecurityBundle\Api\DataPersister;
+namespace CoralMedia\Component\Api\Security\DataPersister;
 
 use ApiPlatform\Core\DataPersister\DataPersisterInterface;
 use CoralMedia\Component\Security\Model\User;

@@ -1,6 +1,8 @@
 api_platform:
     mapping:
-        paths: []
+        paths: [
+            '%kernel.project_dir%/src/CoralMedia/Component/Api/Extra'
+        ]
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RolesController extends AbstractController
 {
     /**
-     * @Route("/roles", name="coral_media_roles")
+     * @Route("/security/roles", name="coral_media_security_roles")
      */
     public function roles()
     {
