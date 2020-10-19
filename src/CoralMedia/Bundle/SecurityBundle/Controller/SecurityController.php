@@ -49,25 +49,6 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/security/api/token")
-     * @param Request $request
-     * @param JWTTokenManagerInterface $jwtTokenManager
-     * @return JsonResponse|RedirectResponse
-     */
-    public function renewJwtToken(Request $request, JWTTokenManagerInterface $jwtTokenManager)
-    {
-        if ($this->getUser()) {
-            $apiToken = $jwtTokenManager->create($this->getUser());
-            $request->getSession()->set(
-                'Bearer', $apiToken
-            );
-
-            return new JsonResponse(['token' => $apiToken]);
-        }
-        return $this->redirectToRoute("coral_media_login");
-    }
-
-    /**
      * @Route("/security/logout", name="coral_media_logout")
      */
     public function logout()
