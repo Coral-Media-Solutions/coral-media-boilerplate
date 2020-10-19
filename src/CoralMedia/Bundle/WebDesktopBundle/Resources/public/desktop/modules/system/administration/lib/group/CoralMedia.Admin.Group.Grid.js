@@ -4,16 +4,6 @@ CoralMedia.Admin.Group.Grid = Ext.extend(Hydra.grid.GridPanel, {
     id: 'coral-media-admin-groups',
     title: 'Groups',
     sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
-    cm: new Ext.grid.ColumnModel({
-        defaults: {
-            width: 120,
-            sortable: true
-        },
-        columns: [
-            {header: 'Name', sortable: true, dataIndex: 'name', type: 'string'},
-            {header: 'Description', sortable: true, dataIndex: 'description', type: 'string'}
-        ]
-    }),
 
     initComponent: function()
     {
@@ -22,6 +12,16 @@ CoralMedia.Admin.Group.Grid = Ext.extend(Hydra.grid.GridPanel, {
         self.store = self.configureStore();
         self.tbar = self.configureToolBar();
         self.bbar = self.configureBottomBar();
+        self.cm = new Ext.grid.ColumnModel({
+            defaults: {
+                width: 120,
+                sortable: true
+            },
+            columns: [
+                {header: 'Name', sortable: true, dataIndex: 'name', type: 'string'},
+                {header: 'Description', sortable: true, dataIndex: 'description', type: 'string'}
+            ]
+        });
 
         CoralMedia.Admin.Group.Grid.superclass.initComponent.call(this);
     },

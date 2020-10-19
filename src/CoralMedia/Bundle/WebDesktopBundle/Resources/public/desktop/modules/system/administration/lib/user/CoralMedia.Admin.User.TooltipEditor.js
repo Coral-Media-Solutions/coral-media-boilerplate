@@ -1,6 +1,6 @@
 Ext.ns('CoralMedia.Admin.User');
 
-CoralMedia.Admin.User.UsersTooltipEditor = Ext.extend(Ext.ux.TooltipEditor, {
+CoralMedia.Admin.User.TooltipEditor = Ext.extend(Ext.ux.TooltipEditor, {
     initComponent:function ()
     {
         let toolTipTreeLoader = new Ext.tree.TreeLoader({
@@ -18,7 +18,7 @@ CoralMedia.Admin.User.UsersTooltipEditor = Ext.extend(Ext.ux.TooltipEditor, {
 
         Ext.apply(this, {treeLoader: toolTipTreeLoader}, {});
 
-        CoralMedia.Admin.User.UsersTooltipEditor.superclass.initComponent.call(this);
+        CoralMedia.Admin.User.TooltipEditor.superclass.initComponent.call(this);
     },
 
     /**
@@ -31,7 +31,7 @@ CoralMedia.Admin.User.UsersTooltipEditor = Ext.extend(Ext.ux.TooltipEditor, {
      */
     show:function (record, cb, scope)
     {
-        CoralMedia.Admin.User.UsersTooltipEditor.superclass.show.call(this, record, cb, scope);
+        CoralMedia.Admin.User.TooltipEditor.superclass.show.call(this, record, cb, scope);
         if (record)
         {
             // set title
@@ -51,8 +51,8 @@ CoralMedia.Admin.User.UsersTooltipEditor = Ext.extend(Ext.ux.TooltipEditor, {
     {
         if (this.callback && this.scope)
         {
-            var ns = this.tree.getChecked();
-            var ids = [];
+            let ns = this.tree.getChecked();
+            let ids = [];
             Ext.each(ns, function (n)
             {
                 ids.push(n.id);

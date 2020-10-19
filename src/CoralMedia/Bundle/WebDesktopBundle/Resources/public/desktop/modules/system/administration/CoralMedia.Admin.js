@@ -9,6 +9,7 @@ CoralMedia.Admin = Ext.extend(Ext.app.Module, {
     type: 'system/administration',
     requires: [
         'app/system/administration/lib/CoralMedia.Admin.Nav',
+        'app/system/administration/lib/user/CoralMedia.Admin.User.TooltipEditor',
         'app/system/administration/lib/user/CoralMedia.Admin.User.Grid',
         'app/system/administration/lib/user/CoralMedia.Admin.User.Form',
         'app/system/administration/lib/group/CoralMedia.Admin.Group.Grid',
