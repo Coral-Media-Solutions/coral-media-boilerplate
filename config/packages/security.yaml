@@ -27,6 +27,16 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api_login:
+            pattern:  ^/security/api/login
+            provider: coral_media_user_provider
+            #anonymous: true
+            stateless: true
+            json_login:
+                check_path:               api_login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+
         api_token:
             pattern: ^/api/
             stateless: true
@@ -35,16 +45,7 @@ security:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
-        api_login:
-            pattern:  ^/security/api/login
-            provider: coral_media_user_provider
-            stateless: true
-            json_login:
-                check_path:               api_token_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-
-        default:
+        main:
             # anonymous: true
             lazy: true
             provider: coral_media_user_provider
