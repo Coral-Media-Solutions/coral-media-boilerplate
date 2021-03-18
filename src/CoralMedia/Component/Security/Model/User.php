@@ -3,12 +3,18 @@
 
 namespace CoralMedia\Component\Security\Model;
 
+use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
+use CoralMedia\Component\Resource\Model\TimeStampableTrait;
+use CoralMedia\Component\Resource\Model\ToggleableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class User implements UserInterface
+abstract class User implements UserInterface, TimeStampableEntityInterface, \Serializable
 {
+    use TimestampableTrait, ToggleableTrait;
+
     /**
      * @var int
      */
@@ -48,6 +54,16 @@ abstract class User implements UserInterface
      * @var ArrayCollection
      */
     protected $groups;
+
+    /**
+     * @var string
+     */
+    protected $image;
+
+    /**
+     * @var File
+     */
+    protected $imageFile;
 
     public function __construct()
     {
@@ -159,9 +175,9 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
@@ -177,9 +193,9 @@ abstract class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
@@ -212,5 +228,69 @@ abstract class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
 
+    /**
+     * @param string $image
+     * @return User
+     */
+    public function setImage(?string $image): User
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     * @return User
+     */
+    public function setImageFile(File $imageFile): User
+    {
+        $this->imageFile = $imageFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($imageFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->enabled,
+            $this->roles,
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->enabled,
+            $this->roles
+        ] = \unserialize($serialized, [self::class]);
+    }
 }

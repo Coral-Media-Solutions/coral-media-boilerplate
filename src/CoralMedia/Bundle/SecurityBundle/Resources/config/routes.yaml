@@ -1,3 +1,7 @@
 controllers:
     resource: ../../Controller/
     type: annotation
+
+api_login_check:
+    path: /api/security/login
+    methods: ['POST']

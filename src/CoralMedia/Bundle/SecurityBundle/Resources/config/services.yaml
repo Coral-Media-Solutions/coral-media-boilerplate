@@ -36,3 +36,27 @@ services:
     CoralMedia\Component\Api\Security\DataPersister\GroupDataPersister:
         bind:
             $decoratedDataPersister: '@api_platform.doctrine.orm.data_persister'
+
+    CoralMedia\Component\Api\Security\Core\Authorization\Voter\ResourceVoter:
+        tags: ['security.voter']
+
+    CoralMedia\Component\Security\Core\Security:
+        public: false
+
+    CoralMedia\Component\Api\Security\Token\Logout\Event\LogoutEventSubscriber:
+        tags:
+            -   name: kernel.event_subscriber
+
+    CoralMedia\Component\Api\Security\Event\CurrentUserSubscriber:
+        tags:
+            -   name: kernel.event_subscriber
+
+    # Default token manager overridden
+    # Check https://github.com/markitosgv/JWTRefreshTokenBundle/issues/200 for further details.
+    gesdinet.jwtrefreshtoken.refresh_token_manager:
+        class: CoralMedia\Component\Api\Security\Token\Doctrine\RefreshTokenManager
+        public: true
+        arguments: [
+            '@doctrine.orm.default_entity_manager',
+            'Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken'
+        ]

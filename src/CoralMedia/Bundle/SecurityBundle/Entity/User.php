@@ -2,12 +2,17 @@
 
 namespace CoralMedia\Bundle\SecurityBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use CoralMedia\Bundle\SecurityBundle\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource(
@@ -25,8 +30,16 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}},
  * )
+ * @ApiFilter(SearchFilter::class, properties={"email": "partial", "firstName": "partial", "lastName": "partial"})
+ * @ApiFilter(DateFilter::class, properties={"createdAt"})
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={ "email", "firstName", "lastName", "createdAt" },
+ *     arguments={ "orderParameterName"="order" }
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="security_users")
+ * @ORM\Table(name="`security_users`")
+ * @Vich\Uploadable()
  */
 class User extends \CoralMedia\Component\Security\Model\User implements UserInterface
 {
@@ -58,13 +71,13 @@ class User extends \CoralMedia\Component\Security\Model\User implements UserInte
 
     /**
      * @Groups({"user:read", "user:write"})
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, nullable=true)
      */
     protected $firstName;
 
     /**
      * @Groups({"user:read", "user:write"})
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, nullable=true)
      */
     protected $lastName;
 
@@ -79,4 +92,32 @@ class User extends \CoralMedia\Component\Security\Model\User implements UserInte
      * @ORM\ManyToMany(targetEntity=Group::class, inversedBy="users")
      */
     protected $groups;
+
+    /**
+     * @Groups({"user:read"})
+     * @ORM\Column(type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @Groups({"user:read"})
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
+
+    /**
+     * @Groups({"user:read", "user:write"})
+     * @ORM\Column(type="boolean")
+     */
+    protected $enabled;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $image;
+
+    /**
+     * @Vich\UploadableField(mapping="users", fileNameProperty="image")
+     */
+    protected $imageFile;
 }

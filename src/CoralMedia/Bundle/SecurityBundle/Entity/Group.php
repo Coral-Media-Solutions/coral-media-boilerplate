@@ -25,7 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"sg:write"}},
  * )
  * @ORM\Entity(repositoryClass=GroupRepository::class)
- * @ORM\Table(name="security_groups")
+ * @ORM\Table(name="`security_groups`")
  */
 class Group extends \CoralMedia\Component\Security\Model\Group
 {

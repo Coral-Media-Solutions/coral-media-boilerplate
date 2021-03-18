@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CoralMedia\Component\Printer\Wasatch\Xml\Parser;
+namespace CoralMedia\Component\Printer\Wasatch\Parser\Xml;
 
 
 class XmlSystemParser

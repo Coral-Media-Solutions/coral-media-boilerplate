@@ -2,18 +2,43 @@
 
 namespace CoralMedia\Bundle\SecurityBundle\Controller;
 
-use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
 
 class SecurityController extends AbstractController
 {
+
+    /**
+     * @Route("/api/security/logout", name="coral_media_api_logout")
+     * @param Request $request
+     * @param EventDispatcherInterface $dispatcher
+     * @return JsonResponse
+     */
+    public function apiLogout(Request $request, EventDispatcherInterface $dispatcher)
+    {
+        $logoutEvent = new LogoutEvent($request, $this->get('security.token_storage')->getToken());
+        $dispatcher->dispatch($logoutEvent, LogoutEvent::class);
+
+        return new JsonResponse(['message' => 'User has been logged out successfully']);
+    }
+
+    /**
+     * @Route("/security/logout", name="coral_media_logout")
+     */
+    public function logout()
+    {
+        throw new \LogicException(
+            'This method can be blank - it will be intercepted by the logout key on your firewall.'
+        );
+    }
+
     /**
      * @Route("/security/login", name="coral_media_login")
      * @param AuthenticationUtils $authenticationUtils
@@ -48,17 +73,7 @@ class SecurityController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/security/logout", name="coral_media_logout")
-     */
-    public function logout()
-    {
-        throw new \LogicException(
-            'This method can be blank - it will be intercepted by the logout key on your firewall.'
-        );
-    }
-
-    private function _renderEasyAdminLoginForm($error, $lastUsername)
+    private function _renderEasyAdminLoginForm($error, $lastUsername): Response
     {
         return $this->render('@EasyAdmin/page/login.html.twig', [
             // parameters usually defined in Symfony login forms

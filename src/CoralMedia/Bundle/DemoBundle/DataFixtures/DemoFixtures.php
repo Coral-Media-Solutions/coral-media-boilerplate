@@ -16,8 +16,9 @@ class DemoFixtures extends Fixture
             ->setEmail('demo@example.com')
             ->setRoles(['ROLE_USER']);
         $user->setPassword(
-            '$argon2id$v=19$m=65536,t=4,p=1$h/FMpajPUDkg1eghvp56wQ$2OTxMJCNFz7SSmbxfhy/yF7Eccqvk/OPOnhLqaStqeg'
+            '$argon2id$v=19$m=65536,t=4,p=1$SFWzjTQaCzN2DkoLJB5S3w$l4rwADkNDzBolYXQpv8tp+/MEhqfkawd5mCGHWyrdoE'
         );
+        $user->setEnabled(true);
 
         $this->addReference(sha1($user->getEmail()), $user);
         $manager->persist($user);
