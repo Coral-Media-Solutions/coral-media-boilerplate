@@ -25,4 +25,5 @@ return [
     CoralMedia\Bundle\WebDesktopBundle\CoralMediaWebDesktopBundle::class => ['all' => true],
     CoralMedia\Bundle\PrinterBundle\CoralMediaPrinterBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
 ];

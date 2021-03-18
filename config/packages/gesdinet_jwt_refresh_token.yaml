@@ -1,0 +1,5 @@
+gesdinet_jwt_refresh_token:
+    single_use: true
+    user_provider: security.user.provider.concrete.coral_media_user_provider
+    firewall: api_login
+    object_manager: doctrine.orm.default_entity_manager
