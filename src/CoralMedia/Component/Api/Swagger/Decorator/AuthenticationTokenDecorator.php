@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace CoralMedia\Component\Api\Swagger\Decorator;
-
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -40,18 +40,18 @@ final class AuthenticationTokenDecorator implements NormalizerInterface
             'properties' => [
                 'username' => [
                     'type' => 'string',
-                    'example' => 'api@example.com',
+                    'example' => 'api',
                 ],
                 'password' => [
                     'type' => 'string',
-                    'example' => 'ApiP4ssw0rd',
+                    'example' => 'api',
                 ],
             ],
         ];
 
         $tokenDocumentation = [
             'paths' => [
-                '/api/security/login' => [
+                '/security/api/login' => [
                     'post' => [
                         'tags' => ['Token'],
                         'operationId' => 'postCredentialsItem',

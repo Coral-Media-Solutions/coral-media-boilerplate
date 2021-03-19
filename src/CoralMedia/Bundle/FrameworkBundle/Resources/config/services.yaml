@@ -44,5 +44,9 @@ services:
 
     CoralMedia\Component\Api\Swagger\Decorator\AuthenticationTokenDecorator:
         decorates: 'api_platform.swagger.normalizer.documentation'
-        arguments: ['@CoralMedia\Component\Api\Swagger\Decorator\AuthenticationTokenDecorator.inner']
+        arguments: [ '@CoralMedia\Component\Api\Swagger\Decorator\AuthenticationTokenDecorator.inner' ]
+        autoconfigure: false
+
+    CoralMedia\Component\Api\Swagger\Decorator\AuthenticationTokenDecorator26:
+        decorates: 'api_platform.openapi.factory'
         autoconfigure: false
