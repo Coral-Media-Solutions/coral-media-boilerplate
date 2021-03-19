@@ -25,5 +25,5 @@ return [
     CoralMedia\Bundle\SecurityBundle\CoralMediaSecurityBundle::class => ['all' => true],
     CoralMedia\Bundle\ApiBundle\CoralMediaApiBundle::class => ['all' => true],
     CoralMedia\Bundle\WebDesktopBundle\CoralMediaWebDesktopBundle::class => ['all' => true],
-    CoralMedia\Bundle\PrinterBundle\CoralMediaPrinterBundle::class => ['all' => true],
+    CoralMedia\Bundle\PrintingBundle\CoralMediaPrintingBundle::class => ['all' => true],
 ];
