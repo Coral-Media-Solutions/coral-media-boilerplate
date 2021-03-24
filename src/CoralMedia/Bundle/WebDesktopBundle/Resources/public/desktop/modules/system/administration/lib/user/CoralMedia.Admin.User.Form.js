@@ -38,6 +38,11 @@ CoralMedia.Admin.User.Form = Ext.extend(Hydra.form.FormPanel,{
         let self = this;
         return self.items||([
             {
+                xtype: 'hidden',
+                name: 'enabled',
+                value: 1
+            },
+            {
                 xtype: 'textfield',
                 fieldLabel: 'First Name',
                 name: 'firstName'

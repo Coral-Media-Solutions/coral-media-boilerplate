@@ -41,7 +41,7 @@ Hydra.form.FormPanel = Ext.extend(Ext.form.FormPanel, {
             url: (self.action === 'update')?self.jsonData['@id']: self.parentGrid.resource,
             method: (self.action === 'update')?'PATCH':'POST',
             headers: {
-                'Content-Type': (self.action === 'update')?'application/merge-patch+json':'application/json;charset=utf-8'
+                'Content-Type': (self.action === 'update')?'application/merge-patch+json':'application/ld+json;charset=utf-8'
             },
             clientValidation: true,
             success: function(form, action) {
@@ -63,7 +63,7 @@ Hydra.form.FormPanel = Ext.extend(Ext.form.FormPanel, {
             url: (self.action === 'update')?self.jsonData['@id']: self.parentGrid.resource,
             method: (self.action === 'update')?'PATCH':'POST',
             headers: {
-                'Content-Type': (self.action === 'update')?'application/merge-patch+json':'application/json;charset=utf-8'
+                'Content-Type': (self.action === 'update')?'application/merge-patch+json':'application/ld+json;charset=utf-8'
             },
             clientValidation: true,
             success: function(form, action) {

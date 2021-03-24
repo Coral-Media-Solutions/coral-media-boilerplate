@@ -24,7 +24,7 @@ Ext.extend(Hydra.form.Action.JsonSubmit, Ext.form.Action.Submit, {
                 method: method,
                 waitMsg: "Please wait while saving",
                 waitTitle: "Please wait",
-                headers: o.headers || {'Content-Type': 'application/json'},
+                headers: o.headers || {'Content-Type': 'application/ld+json'},
                 params: o.params || String.format('{0}', encodedParams),
                 isUpload: this.form.fileUpload
             }));

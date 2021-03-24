@@ -89,7 +89,10 @@ CoralMedia.Admin.User.Grid = Ext.extend(Hydra.grid.GridPanel, {
         return self.store||(
             new Ext.data.JsonStore({
                 restful: true,
-                proxy: new Ext.data.HttpProxy({url:self.resource}),
+                proxy: new Ext.data.HttpProxy({
+                    url:self.resource,
+                    defaultHeaders: {'Content-Type': 'application/ld+json'}
+                }),
                 idProperty: 'id',
                 totalProperty: 'hydra:totalItems',
                 root: 'hydra:member',

@@ -126,6 +126,7 @@ Hydra.grid.GridPanel = Ext.extend(Ext.grid.GridPanel, {
     {
         let self = this;
         let resource = self.getSelectionModel().getSelected().json['@id'];
+
         Ext.MessageBox.confirm('Are you sure? Please confirm',
             'Are you sure you want to delete selected record?', function (btn) {
                 if (btn === "yes")
