@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CoralMedia\Component\Resource\Model;
 
-use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
 use DateTimeInterface;
 
 trait TimeStampableTrait
@@ -20,7 +19,7 @@ trait TimeStampableTrait
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?DateTimeInterface $createdAt): TimeStampableEntityInterface
+    public function setCreatedAt(?DateTimeInterface $createdAt): TimeStampableInterface
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -31,7 +30,7 @@ trait TimeStampableTrait
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?DateTimeInterface $updatedAt): TimeStampableEntityInterface
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): TimeStampableInterface
     {
         $this->updatedAt = $updatedAt;
         return $this;

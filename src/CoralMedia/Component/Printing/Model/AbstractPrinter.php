@@ -3,12 +3,12 @@
 
 namespace CoralMedia\Component\Printing\Model;
 
-
-use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
+use CoralMedia\Component\Resource\Model\TimeStampableInterface;
 use CoralMedia\Component\Resource\Model\TimeStampableTrait;
+use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use CoralMedia\Component\Resource\Model\ToggleableTrait;
 
-abstract class AbstractPrinter implements TimeStampableEntityInterface
+abstract class AbstractPrinter implements TimeStampableInterface, ToggleableInterface
 {
     use TimeStampableTrait, ToggleableTrait;
 

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace CoralMedia\Component\Doctrine\ORM\Mapping;
+namespace CoralMedia\Component\Resource\Model;
 
 use DateTimeInterface;
 
-interface TimeStampableEntityInterface
+interface TimeStampableInterface
 {
     /**
      * @return DateTimeInterface
@@ -14,9 +14,9 @@ interface TimeStampableEntityInterface
 
     /**
      * @param DateTimeInterface|null $createdAt
-     * @return TimeStampableEntityInterface
+     * @return TimeStampableInterface
      */
-    public function setCreatedAt(?DateTimeInterface $createdAt): TimeStampableEntityInterface;
+    public function setCreatedAt(?DateTimeInterface $createdAt): TimeStampableInterface;
 
     /**
      * @return DateTimeInterface
@@ -25,7 +25,7 @@ interface TimeStampableEntityInterface
 
     /**
      * @param DateTimeInterface|null $updatedAt
-     * @return TimeStampableEntityInterface
+     * @return TimeStampableInterface
      */
-    public function setUpdatedAt(?DateTimeInterface $updatedAt): TimeStampableEntityInterface;
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): TimeStampableInterface;
 }

@@ -3,16 +3,16 @@
 
 namespace CoralMedia\Component\Security\Model;
 
-use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
-use CoralMedia\Component\Doctrine\ORM\Mapping\ToggleableEntityInterface;
+use CoralMedia\Component\Resource\Model\TimeStampableInterface;
 use CoralMedia\Component\Resource\Model\TimeStampableTrait;
+use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use CoralMedia\Component\Resource\Model\ToggleableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class User implements UserInterface, TimeStampableEntityInterface, \Serializable, ToggleableEntityInterface
+abstract class User implements UserInterface, TimeStampableInterface, \Serializable, ToggleableInterface
 {
     use TimestampableTrait, ToggleableTrait;
 

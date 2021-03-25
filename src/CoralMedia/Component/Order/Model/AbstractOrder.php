@@ -3,12 +3,11 @@
 
 namespace CoralMedia\Component\Order\Model;
 
-
-use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
 use CoralMedia\Component\Resource\Model\StatusableTrait;
+use CoralMedia\Component\Resource\Model\TimeStampableInterface;
 use CoralMedia\Component\Resource\Model\TimeStampableTrait;
 
-abstract class AbstractOrder implements TimeStampableEntityInterface
+abstract class AbstractOrder implements TimeStampableInterface
 {
     use TimeStampableTrait, StatusableTrait;
 

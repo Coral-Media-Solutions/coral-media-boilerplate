@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CoralMedia\Component\Resource\Model;
 
-use CoralMedia\Component\Doctrine\ORM\Mapping\ToggleableEntityInterface;
 
 trait ToggleableTrait
 {
@@ -18,9 +17,9 @@ trait ToggleableTrait
 
     /**
      * @param bool $enabled
-     * @return ToggleableEntityInterface
+     * @return ToggleableInterface
      */
-    public function setEnabled(?bool $enabled): ToggleableEntityInterface
+    public function setEnabled(?bool $enabled): ToggleableInterface
     {
         $this->enabled = (bool) $enabled;
         return $this;

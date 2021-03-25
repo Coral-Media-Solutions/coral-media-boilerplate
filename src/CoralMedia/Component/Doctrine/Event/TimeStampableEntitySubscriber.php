@@ -4,7 +4,7 @@
 namespace CoralMedia\Component\Doctrine\Event;
 
 
-use CoralMedia\Component\Doctrine\ORM\Mapping\TimeStampableEntityInterface;
+use CoralMedia\Component\Resource\Model\TimeStampableInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -23,11 +23,11 @@ class TimeStampableEntitySubscriber implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args)
     {
         /**
-         * @var TimeStampableEntityInterface
+         * @var TimeStampableInterface
          */
         $entity = $args->getEntity();
 
-        if(!$entity instanceof TimeStampableEntityInterface){
+        if(!$entity instanceof TimeStampableInterface){
             return;
         }
         $currentDateTime = new \DateTime();
@@ -38,11 +38,11 @@ class TimeStampableEntitySubscriber implements EventSubscriber
     public function preUpdate(LifecycleEventArgs $args)
     {
         /**
-         * @var TimeStampableEntityInterface
+         * @var TimeStampableInterface
          */
         $entity = $args->getEntity();
 
-        if(!$entity instanceof TimeStampableEntityInterface){
+        if(!$entity instanceof TimeStampableInterface){
             return;
         }
         $currentDateTime = new \DateTime();
