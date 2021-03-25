@@ -6,5 +6,4 @@ return array (
   'JWT_PUBLIC_KEY' => NULL,
   'JWT_SECRET_KEY' => NULL,
   'MAILER_DSN' => NULL,
-  'MONOGRAM_DATABASE_URL' => NULL,
 );
