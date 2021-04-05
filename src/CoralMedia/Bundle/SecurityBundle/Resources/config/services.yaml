@@ -37,11 +37,8 @@ services:
         bind:
             $decoratedDataPersister: '@api_platform.doctrine.orm.data_persister'
 
-    CoralMedia\Component\Api\Security\Core\Authorization\Voter\ResourceVoter:
+    CoralMedia\Component\Api\Security\Voter\ApiResourceVoter:
         tags: ['security.voter']
-
-    CoralMedia\Component\Security\Core\Security:
-        public: false
 
     CoralMedia\Component\Api\Security\Token\Logout\Event\LogoutEventSubscriber:
         tags:

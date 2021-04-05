@@ -11,9 +11,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * Class Resource
  * @package CoralMedia\Component\Security\Model
  * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_API')"},
  *     collectionOperations={
  *          "get" = {
- *              "security" = "is_granted('GET', object)"
+ *              "security" = "is_granted('GET', 'ROLE_API')"
  *          }
  *     },
  *     itemOperations={

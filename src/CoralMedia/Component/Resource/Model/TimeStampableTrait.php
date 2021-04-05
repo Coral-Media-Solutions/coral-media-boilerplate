@@ -19,17 +19,28 @@ trait TimeStampableTrait
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?DateTimeInterface $createdAt): TimeStampableInterface
+    /**
+     * @param DateTimeInterface|null $createdAt
+     * @return TimeStampableInterface|TimeStampableTrait
+     */
+    public function setCreatedAt(?DateTimeInterface $createdAt):TimeStampableInterface
     {
         $this->createdAt = $createdAt;
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface|null
+     */
     public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
 
+    /**
+     * @param DateTimeInterface|null $updatedAt
+     * @return TimeStampableInterface|TimeStampableTrait
+     */
     public function setUpdatedAt(?DateTimeInterface $updatedAt): TimeStampableInterface
     {
         $this->updatedAt = $updatedAt;

@@ -17,7 +17,7 @@ trait ToggleableTrait
 
     /**
      * @param bool $enabled
-     * @return ToggleableInterface
+     * @return ToggleableInterface|ToggleableTrait
      */
     public function setEnabled(?bool $enabled): ToggleableInterface
     {

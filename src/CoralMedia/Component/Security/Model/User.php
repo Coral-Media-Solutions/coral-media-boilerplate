@@ -3,18 +3,16 @@
 
 namespace CoralMedia\Component\Security\Model;
 
-use CoralMedia\Component\Resource\Model\TimeStampableInterface;
 use CoralMedia\Component\Resource\Model\TimeStampableTrait;
-use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use CoralMedia\Component\Resource\Model\ToggleableTrait;
+use CoralMedia\Component\Resource\Model\UserableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class User implements UserInterface, TimeStampableInterface, \Serializable, ToggleableInterface
+abstract class User implements UserInterface
 {
-    use TimestampableTrait, ToggleableTrait;
+    use TimestampableTrait, ToggleableTrait, UserableTrait;
 
     /**
      * @var int
@@ -131,7 +129,7 @@ abstract class User implements UserInterface, TimeStampableInterface, \Serializa
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = UserInterface::ROLE_USER;
 
         return array_unique($roles);
     }

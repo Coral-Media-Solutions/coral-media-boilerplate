@@ -20,6 +20,7 @@ final class ResourceCollectionDataProvider implements CollectionDataProviderInte
     public function __construct(ResourceNameCollectionFactoryInterface $resourceNameCollection)
     {
         $this->resourceNameCollection = (array) $resourceNameCollection->create()->getIterator();
+        $this->resourceNameCollection = array_diff($this->resourceNameCollection, [Resource::class]);
     }
 
     public function getCollection(string $resourceClass, string $operationName = null)

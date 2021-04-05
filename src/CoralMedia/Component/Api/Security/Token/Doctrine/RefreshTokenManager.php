@@ -8,6 +8,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class RefreshTokenManager extends \Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager
 {
+    /**
+     * RefreshTokenManager constructor.
+     * @param ObjectManager $om
+     * @param $class
+     */
     public function __construct(ObjectManager $om, $class)
     {
         $this->objectManager = $om;

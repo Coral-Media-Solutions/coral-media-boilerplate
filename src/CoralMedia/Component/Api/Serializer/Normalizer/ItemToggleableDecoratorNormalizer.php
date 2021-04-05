@@ -2,6 +2,7 @@
 
 namespace CoralMedia\Component\Api\Serializer\Normalizer;
 
+use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerAwareInterface;
@@ -34,14 +35,16 @@ class ItemToggleableDecoratorNormalizer implements
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        $support = $this->decorated->supportsDenormalization($data, $type, $format);
-        return $support;
+        return $this->decorated->supportsDenormalization($data, $type, $format) &&
+            is_subclass_of($type, ToggleableInterface::class);
     }
 
     public function denormalize($data, $type, $format = null, array $context = [])
     {
-        if (is_array($data) && isset($data['enabled'])) {
-            $data['enabled'] = ($data['enabled']=="false" || $data['enabled']=="0")?false:true;
+        if (is_array($data) && isset($data[ToggleableInterface::FIELD_NAME])) {
+            $data[ToggleableInterface::FIELD_NAME] =
+                ($data[ToggleableInterface::FIELD_NAME]=="false" || $data[ToggleableInterface::FIELD_NAME]=="0")?
+                    false:true;
         }
         return $this->decorated->denormalize($data, $type, $format, $context);
     }

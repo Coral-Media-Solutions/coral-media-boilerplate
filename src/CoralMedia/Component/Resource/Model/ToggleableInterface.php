@@ -6,6 +6,8 @@ namespace CoralMedia\Component\Resource\Model;
 
 interface ToggleableInterface
 {
+    const FIELD_NAME = 'enabled';
+
     public function enable();
 
     public function disable();

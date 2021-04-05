@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CoralMedia\Component\Doctrine\Event;
+namespace CoralMedia\Component\Resource\Event;
 
 
 use CoralMedia\Component\Resource\Model\TimeStampableInterface;

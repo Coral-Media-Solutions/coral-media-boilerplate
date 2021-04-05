@@ -16,12 +16,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_API')"},
  *     collectionOperations={
- *          "get" = { "security" = "is_granted('GET', object)" },
+ *          "get" = { "security" = "is_granted('GET', 'ROLE_API')" },
  *          "post" = { "security_post_denormalize" = "is_granted('POST', object)" },
  *     },
  *     itemOperations={
- *          "get" = { "security" = "is_granted('GET', object)" },
+ *          "get" = { "security" = "is_granted('GET', 'ROLE_API')" },
  *          "put" = { "security" = "is_granted('PUT', object)" },
  *          "patch" = { "security" = "is_granted('PATCH', object)" },
  *          "delete" = { "security" = "is_granted('DELETE', object)" },
@@ -104,6 +105,20 @@ class User extends \CoralMedia\Component\Security\Model\User implements UserInte
      * @ORM\Column(type="datetime")
      */
     protected $updatedAt;
+
+    /**
+     * @Groups({"user:read"})
+     * @ORM\ManyToOne(targetEntity="CoralMedia\Bundle\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true)
+     */
+    protected $createdBy;
+
+    /**
+     * @Groups({"user:read"})
+     * @ORM\ManyToOne(targetEntity="CoralMedia\Bundle\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="updated_by", referencedColumnName="id", nullable=true)
+     */
+    protected $updatedBy;
 
     /**
      * @Groups({"user:read", "user:write"})

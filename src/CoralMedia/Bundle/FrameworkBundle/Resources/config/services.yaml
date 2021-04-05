@@ -38,6 +38,10 @@ services:
                 id: 'container'
                 template: '@CoralMediaFramework/Collector/container.html.twig'
 
-    CoralMedia\Component\Doctrine\Event\TimeStampableEntitySubscriber:
+    CoralMedia\Component\Resource\Event\TimeStampableEntitySubscriber:
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
+    CoralMedia\Component\Resource\Event\UserableEntitySubscriber:
         tags:
             - { name: 'doctrine.event_subscriber' }
