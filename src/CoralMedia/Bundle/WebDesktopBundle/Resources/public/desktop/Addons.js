@@ -64,5 +64,10 @@ Ext.app.Addons = {
         id: 'tooltip-editor',
         files: ['addons/tooltip-editor/Ext.ux.TooltipEditor'],
         hasResources: false
-    }
+    },
+    'xboolean-column': {
+        id: 'tooltip-editor',
+        files: ['addons/xboolean-column/Ext.ux.Grid.XBooleanColumn'],
+        hasResources: false
+    },
 };

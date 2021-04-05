@@ -34,7 +34,28 @@ CoralMedia.Admin.User.Grid = Ext.extend(Hydra.grid.GridPanel, {
             columns: [
                 {header: 'First Name', sortable: true, dataIndex: 'firstName', type: 'string'},
                 {header: 'Last Name', sortable: true, dataIndex: 'lastName', type: 'string'},
-                {header: 'Email', sortable: true, dataIndex: 'email', type: 'string'}
+                {header: 'Email', sortable: true, dataIndex: 'email', type: 'string'},
+                {
+                    header: 'Active', dataIndex: 'enabled',
+                    xtype: 'actioncolumn',
+                    width: 50,
+                    items: [
+                        {
+                            icon: '/build/desktop/resources/images/oxygen/16x16/task-delegate.png',
+                            getClass: function(v, meta, rec) {  // Or return a class from a function
+                                if (rec.get('enabled') == true) {
+                                    return 'task-complete-icon';
+                                } else {
+                                    return 'task-reject-icon';
+                                }
+                            },
+                            handler: function(grid, rowIndex, colIndex) {
+                                let rec = grid.getStore().getAt(rowIndex);
+                                console.info(grid);
+                            }
+                        }
+                    ]
+                }
             ]
         });
 
@@ -96,7 +117,7 @@ CoralMedia.Admin.User.Grid = Ext.extend(Hydra.grid.GridPanel, {
                 idProperty: 'id',
                 totalProperty: 'hydra:totalItems',
                 root: 'hydra:member',
-                fields: ['firstName', 'lastName', 'email'],
+                fields: ['firstName', 'lastName', 'email', 'enabled'],
                 baseParams: {
                     page: 1
                 },
