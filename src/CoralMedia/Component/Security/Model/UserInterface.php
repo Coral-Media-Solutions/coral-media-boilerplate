@@ -14,5 +14,5 @@ interface UserInterface extends BaseUserInterface,
     const ROLE_USER = 'ROLE_USER';
     const ROLE_API = 'ROLE_API';
     const ROLE_ADMIN = 'ROLE_ADMIN';
-    const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
+    const ROLE_SUPERADMIN = 'ROLE_SUPER_ADMIN';
 }

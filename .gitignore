@@ -28,3 +28,8 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> symfony/uploads ###
+/public/uploads/images/users/*
+!public/uploads/images/users/.gitignore
+###< symfony/uploads ###

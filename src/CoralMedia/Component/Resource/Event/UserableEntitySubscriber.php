@@ -22,7 +22,10 @@ class UserableEntitySubscriber implements EventSubscriber
         $this->_entityManager = $entityManager;
     }
 
-    public function getSubscribedEvents()
+    /**
+     * @return array
+     */
+    public function getSubscribedEvents(): array
     {
         return [
             Events::prePersist,

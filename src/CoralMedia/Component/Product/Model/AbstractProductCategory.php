@@ -3,13 +3,16 @@
 
 namespace CoralMedia\Component\Product\Model;
 
+use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use CoralMedia\Component\Resource\Model\ToggleableTrait;
+use CoralMedia\Component\Resource\Model\UserableInterface;
+use CoralMedia\Component\Resource\Model\UserableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-abstract class AbstractProductCategory
+abstract class AbstractProductCategory implements ToggleableInterface, UserableInterface
 {
-    use ToggleableTrait;
+    use ToggleableTrait, UserableTrait;
 
     /**
      * @var int
@@ -31,9 +34,15 @@ abstract class AbstractProductCategory
      */
     protected $parent;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $products;
+
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     /**

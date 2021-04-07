@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -133,6 +134,12 @@ class User extends \CoralMedia\Component\Security\Model\User implements UserInte
 
     /**
      * @Vich\UploadableField(mapping="users", fileNameProperty="image")
+     * @Assert\Image(
+     *     minWidth = 300,
+     *     maxWidth = 650,
+     *     minHeight = 300,
+     *     maxHeight = 650
+     * )
      */
     protected $imageFile;
 }

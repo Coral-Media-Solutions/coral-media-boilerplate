@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=ProductCategoryRepository::class)
+ * @ORM\Table(name="product_product_categories")
  */
 class ProductCategory extends AbstractProductCategory
 {
@@ -46,4 +47,16 @@ class ProductCategory extends AbstractProductCategory
      * @ORM\OneToMany(targetEntity=ProductCategory::class, mappedBy="parent")
      */
     protected $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CoralMedia\Bundle\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true)
+     */
+    protected $createdBy;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CoralMedia\Bundle\SecurityBundle\Entity\User")
+     * @ORM\JoinColumn(name="updated_by", referencedColumnName="id", nullable=true)
+     */
+    protected $updatedBy;
 }
