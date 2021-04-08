@@ -7,8 +7,8 @@ coral_media_security:
 coral_media_api:
     resource: '@CoralMediaApiBundle/Resources/config/routes.yaml'
 
-coral_media_web_desktop:
-    resource: '@CoralMediaWebDesktopBundle/Resources/config/routes.yaml'
+#coral_media_web_desktop:
+#    resource: '@CoralMediaWebDesktopBundle/Resources/config/routes.yaml'
 
 coral_media_printing:
     resource: '@CoralMediaPrintingBundle/Resources/config/routes.yaml'

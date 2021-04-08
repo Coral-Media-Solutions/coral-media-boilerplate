@@ -24,7 +24,7 @@ return [
     CoralMedia\Bundle\DemoBundle\CoralMediaDemoBundle::class => ['dev' => true],
     CoralMedia\Bundle\SecurityBundle\CoralMediaSecurityBundle::class => ['all' => true],
     CoralMedia\Bundle\ApiBundle\CoralMediaApiBundle::class => ['all' => true],
-    CoralMedia\Bundle\WebDesktopBundle\CoralMediaWebDesktopBundle::class => ['all' => true],
+//    CoralMedia\Bundle\WebDesktopBundle\CoralMediaWebDesktopBundle::class => ['all' => true],
     CoralMedia\Bundle\PrintingBundle\CoralMediaPrintingBundle::class => ['all' => true],
     CoralMedia\Bundle\ProductBundle\CoralMediaProductBundle::class => ['all' => true],
 ];

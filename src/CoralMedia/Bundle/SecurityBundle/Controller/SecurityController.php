@@ -55,17 +55,17 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        try {
-            if ($kernel->getBundle('CoralMediaWebDesktopBundle')) {
-                return $this->render(
-                    '@CoralMediaWebDesktop/security/login.html.twig',
-                    ['last_username' => $lastUsername, 'error' => $error]
-                );
-            }
-            if ($kernel->getBundle('EasyAdminBundle')) {
-                return $this->_renderEasyAdminLoginForm($error, $lastUsername);
-            }
-        } catch (\InvalidArgumentException $e) {
+
+        $bundles = $kernel->getBundles();
+
+        if (isset($bundles['CoralMediaWebDesktopBundle'])) {
+            return $this->render(
+                '@CoralMediaWebDesktop/security/login.html.twig',
+                ['last_username' => $lastUsername, 'error' => $error]
+            );
+        } else if (isset($bundles['EasyAdminBundle'])) {
+            return $this->_renderEasyAdminLoginForm($error, $lastUsername);
+        } else {
             return $this->render(
                 '@CoralMediaSecurity/security/login.html.twig',
                 ['last_username' => $lastUsername, 'error' => $error]
@@ -75,7 +75,9 @@ class SecurityController extends AbstractController
 
     private function _renderEasyAdminLoginForm($error, $lastUsername): Response
     {
-        return $this->render('@EasyAdmin/page/login.html.twig', [
+        return $this->render(
+            '@EasyAdmin/page/login.html.twig',
+            [
             // parameters usually defined in Symfony login forms
             'error' => $error,
             'last_username' => $lastUsername,
