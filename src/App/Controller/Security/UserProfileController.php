@@ -4,7 +4,6 @@
 namespace App\Controller\Security;
 
 use CoralMedia\Bundle\SecurityBundle\Entity\User;
-use CoralMedia\Component\EasyCorp\Field\VichImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -12,10 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Response;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -30,7 +27,7 @@ class UserProfileController extends AbstractCrudController
     public function index(AdminContext $context): Response
     {
         return $this->redirect(
-            $this->get(CrudUrlGenerator::class)->build()
+            $this->get(AdminUrlGenerator::class)
                 ->setController(UserProfileController::class)
                 ->setAction(Crud::PAGE_EDIT)
                 ->setEntityId($this->getUser()->getId())

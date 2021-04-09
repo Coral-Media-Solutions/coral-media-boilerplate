@@ -16,7 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -31,7 +31,14 @@ class DashboardController extends AbstractDashboardController
         if (!$this->getUser()) {
             return $this->redirectToRoute('coral_media_login');
         }
-        return parent::index();
+//                return parent::index();
+        return $this->redirect(
+            $this->get(AdminUrlGenerator::class)
+                ->setController(UserProfileController::class)
+                ->setAction(Crud::PAGE_EDIT)
+                ->setEntityId($this->getUser()->getId())
+                ->generateUrl()
+        );
     }
 
     public function configureDashboard(): Dashboard
@@ -86,12 +93,12 @@ class DashboardController extends AbstractDashboardController
         /**
          * @var $user User
          */
-        $crudUrlGenerator = $this->get(CrudUrlGenerator::class);
-        $profileUrl = $crudUrlGenerator->build()
+        $profileUrl = $this->get(AdminUrlGenerator::class)
             ->setController(UserProfileController::class)
             ->setAction(Crud::PAGE_EDIT)
             ->setEntityId($this->getUser()->getId())
             ->generateUrl();
+
         return parent::configureUserMenu($user)
             ->setName($user->getFirstName() . ' '. $user->getLastName())
             ->displayUserName(false)
