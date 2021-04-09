@@ -100,8 +100,13 @@ class DashboardController extends AbstractDashboardController
             ->generateUrl();
 
         return parent::configureUserMenu($user)
+            ->setAvatarUrl(
+                $this->getParameter('vich_uploader.mappings')['users']['uri_prefix']. '/' .
+                $user->getImage()
+            )
+            ->displayUserAvatar(true)
             ->setName($user->getFirstName() . ' '. $user->getLastName())
-            ->displayUserName(false)
+            ->displayUserName(true)
             ->addMenuItems([
                 MenuItem::linkToUrl('My Profile', 'fa fa-id-card', $profileUrl),
             ]);
