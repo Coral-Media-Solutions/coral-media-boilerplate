@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
+/**
+ * Class JsonBooleanDeserializerSubscriber
+ * @package CoralMedia\Component\Api\Event
+ *
+ * @deprecated Use JsonLdToggleableDecoratorNormalizer instead
+ */
 class JsonBooleanDeserializerSubscriber implements EventSubscriberInterface
 {
 

@@ -23,7 +23,7 @@ class ItemToggleableDecoratorNormalizer implements
         $this->decorated = $decorated;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return $this->decorated->supportsNormalization($data, $format);
     }
@@ -33,7 +33,7 @@ class ItemToggleableDecoratorNormalizer implements
         return $this->decorated->normalize($object, $format, $context);
     }
 
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return $this->decorated->supportsDenormalization($data, $type, $format) &&
             is_subclass_of($type, ToggleableInterface::class);
