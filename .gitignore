@@ -32,4 +32,7 @@ yarn-error.log
 ###> symfony/uploads ###
 /public/uploads/images/users/*
 !public/uploads/images/users/.gitignore
+
+/public/uploads/media/*
+!public/uploads/media/.gitignore
 ###< symfony/uploads ###
