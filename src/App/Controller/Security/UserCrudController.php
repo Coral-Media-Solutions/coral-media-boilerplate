@@ -39,7 +39,8 @@ class UserCrudController extends AbstractCrudController
     private $_userPasswordEncoder;
     private $_adminContextFactory;
 
-    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, AdminContextFactory $adminContextFactory)
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder,
+                                AdminContextFactory $adminContextFactory)
     {
         $this->_userPasswordEncoder = $userPasswordEncoder;
         $this->_adminContextFactory = $adminContextFactory;
