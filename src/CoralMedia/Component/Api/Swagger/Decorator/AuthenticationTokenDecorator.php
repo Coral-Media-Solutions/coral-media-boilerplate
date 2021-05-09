@@ -7,6 +7,11 @@ namespace CoralMedia\Component\Api\Swagger\Decorator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
+/**
+ * Class AuthenticationTokenDecorator
+ * @package CoralMedia\Component\Api\Swagger\Decorator
+ * @deprecated
+ */
 final class AuthenticationTokenDecorator implements NormalizerInterface
 {
     private $decorated;
