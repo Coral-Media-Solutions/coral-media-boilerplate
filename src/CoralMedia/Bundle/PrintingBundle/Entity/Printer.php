@@ -4,14 +4,13 @@ namespace CoralMedia\Bundle\PrintingBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use CoralMedia\Bundle\PrintingBundle\Repository\PrinterRepository;
-use CoralMedia\Component\Printing\Model\AbstractPrinter;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=PrinterRepository::class)
  */
-class Printer extends AbstractPrinter
+class Printer extends \CoralMedia\Component\Printing\Model\Printer
 {
     /**
      * @ORM\Id
