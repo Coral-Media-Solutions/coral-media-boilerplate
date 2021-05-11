@@ -44,13 +44,15 @@ class UserableEntitySubscriber implements EventSubscriber
             return;
         }
 
-        $userToken = $this->_tokenStorage->getToken()->getUser();
-        $userEntity = $this->_entityManager->getRepository(User::class)
-            ->findOneBy(['email' => $userToken->getUsername()]);
+        if (!is_null($this->_tokenStorage->getToken())) {
+            $userToken = $this->_tokenStorage->getToken()->getUser();
+            $userEntity = $this->_entityManager->getRepository(User::class)
+                ->findOneBy(['email' => $userToken->getUsername()]);
 
 
-        $entity->setCreatedBy($userEntity);
-        $entity->setUpdatedBy($userEntity);
+            $entity->setCreatedBy($userEntity);
+            $entity->setUpdatedBy($userEntity);
+        }
     }
 
     public function preUpdate(LifecycleEventArgs $args)
@@ -64,10 +66,12 @@ class UserableEntitySubscriber implements EventSubscriber
             return;
         }
 
-        $userToken = $this->_tokenStorage->getToken()->getUser();
-        $userEntity = $this->_entityManager->getRepository(User::class)
-            ->findOneBy(['email' => $userToken->getUsername()]);
+        if (!is_null($this->_tokenStorage->getToken())) {
+            $userToken = $this->_tokenStorage->getToken()->getUser();
+            $userEntity = $this->_entityManager->getRepository(User::class)
+                ->findOneBy(['email' => $userToken->getUsername()]);
 
-        $entity->setUpdatedBy($userEntity);
+            $entity->setUpdatedBy($userEntity);
+        }
     }
 }
