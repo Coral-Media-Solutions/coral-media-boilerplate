@@ -16,7 +16,7 @@ class SecurityFixtures extends Fixture
             ->setEmail('admin@example.com')
             ->setRoles(['ROLE_ADMIN']);
         $user->setPassword(
-            '$argon2id$v=19$m=65536,t=4,p=1$TEm+eBelU7Vjl+uzMo1P1A$GpjHu4R9tCgaYAybnmsM1+QejuWUHmdJBEvVYq96Rlc'
+            '$argon2id$v=19$m=65536,t=4,p=1$yj3Q+yQwJa30X6xcrvm98Q$Rsq4rN70D3l8+IcMDfcwbks2qijg6gJDJcRf03f+0g8'
         );
         $user->setEnabled(true);
 
@@ -29,7 +29,7 @@ class SecurityFixtures extends Fixture
             ->setEmail('superadmin@example.com')
             ->setRoles(['ROLE_SUPER_ADMIN']);
         $user->setPassword(
-            '$argon2id$v=19$m=65536,t=4,p=1$Q+Aussp7wuZ6RsXTxlr9pA$UaG1/BbBSjNXWzbtR5JR5ALMZR1RRdI1liaWAlP+0l8'
+            '$argon2id$v=19$m=65536,t=4,p=1$+5+HXM1xgDhevOQiUnwlfQ$sE6zmZuFARYYS7owAyDaiuvaLrE/sQ0FtEbqLKD7tHo'
         );
         $user->setEnabled(true);
 
