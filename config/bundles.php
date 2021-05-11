@@ -21,7 +21,7 @@ return [
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
     CoralMedia\Bundle\FrameworkBundle\CoralMediaFrameworkBundle::class => ['all' => true],
-    CoralMedia\Bundle\DemoBundle\CoralMediaDemoBundle::class => ['dev' => true],
+//    CoralMedia\Bundle\DemoBundle\CoralMediaDemoBundle::class => ['dev' => true],
     CoralMedia\Bundle\SecurityBundle\CoralMediaSecurityBundle::class => ['all' => true],
     CoralMedia\Bundle\ApiBundle\CoralMediaApiBundle::class => ['all' => true],
 //    CoralMedia\Bundle\WebDesktopBundle\CoralMediaWebDesktopBundle::class => ['all' => true],
