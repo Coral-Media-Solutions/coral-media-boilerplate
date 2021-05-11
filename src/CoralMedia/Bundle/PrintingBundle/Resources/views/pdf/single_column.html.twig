@@ -2,7 +2,12 @@
 {% block title %}{{ batchNumber }}{% endblock %}
 {% block body %}
     {% for key, item in items %}
-    <table style="margin:auto auto; border-right: solid 1px #ddd; width: 56in; height: 66in;">
+    <table style="
+        border-right: solid 1px #ddd; width: 56in; height: 66in;
+        {% if loop.first == false %}
+                margin-top: 1in;
+        {% endif %}
+    ">
         <tbody>
         <tr>
             <td style="padding: 0.2in;">
@@ -50,8 +55,8 @@
             </td>
         </tr>
         <tr>
-            <td colspan="4" align="center">
-                <img style="width: 50in" src="{{ item.imageUrl }}">
+            <td style="padding-top: 1in; padding-bottom: 1in;" colspan="4" align="center">
+                <img src="{{ item.imageUrl }}">
             </td>
         </tr>
         <tr>
@@ -101,8 +106,8 @@
         </tr>
         </tbody>
     </table>
-        {% if loop.last == false %}
-            <pagebreak />
-        {% endif %}
+{#        {% if loop.last == false %}#}
+{#            <pagebreak />#}
+{#        {% endif %}#}
     {% endfor %}
 {% endblock %}

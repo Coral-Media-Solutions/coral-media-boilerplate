@@ -3,7 +3,11 @@
 {% block stylesheets %}{% endblock %}
 {% block body %}
     {% for item in items %}
-        <table>
+        <table style="width: 72in;
+        {% if loop.first == false %}
+                margin-top: 1in;
+        {% endif %}
+        ">
             <tbody>
             <tr>
         {% for key, sub in item %}
@@ -56,8 +60,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" align="center">
-                            <img style="width: 30in" src="{{ sub.imageUrl }}">
+                        <td style="padding-top: 1in; padding-bottom: 1in;" colspan="4" align="center">
+                            <img src="{{ sub.imageUrl }}">
                         </td>
                     </tr>
                     <tr>
@@ -112,8 +116,8 @@
             </tr>
             </tbody>
         </table>
-        {% if loop.last == false %}
-            <pagebreak />
-        {% endif %}
+{#        {% if loop.last == false %}#}
+{#            <pagebreak />#}
+{#        {% endif %}#}
     {% endfor %}
 {% endblock %}

@@ -37,7 +37,7 @@ class PdfBatchFileHelper
      * @throws SyntaxError
      * @throws Exception
      */
-    public function generatePdf(array $batchedOrders, array $pdfParams)
+    public function generatePdf(array $batchedOrders, array $pdfParams): string
     {
         if(!isset($pdfParams['fileName']) || !$pdfParams['fileName']) {
             $pdfParams['fileName'] = $this->getFileName();
@@ -71,7 +71,8 @@ class PdfBatchFileHelper
 
         try {
             $pdfObject = new Mpdf(
-                ['mode' => 'utf-8', 'format' => [$pdfParams['pageWidth'], $pdfParams['pageHeight']],
+                ['mode' => 'utf-8', 'format' => [$pdfParams['pageWidth'],
+                    ($pdfParams['pageHeight'] * count($batchedOrders['items']))],
                     'margin-top' => $pdfParams['marginTop'],
                 ]
             );
