@@ -8,7 +8,7 @@ use CoralMedia\Component\Resource\Model\TimeStampableTrait;
 use CoralMedia\Component\Resource\Model\ToggleableInterface;
 use CoralMedia\Component\Resource\Model\ToggleableTrait;
 
-abstract class AbstractPrinter implements TimeStampableInterface, ToggleableInterface
+abstract class Printer implements TimeStampableInterface, ToggleableInterface
 {
     use TimeStampableTrait, ToggleableTrait;
 
