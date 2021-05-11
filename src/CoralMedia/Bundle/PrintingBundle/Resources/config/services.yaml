@@ -29,3 +29,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    CoralMedia\Component\Printing\Helper\PdfBatchFileHelper:
+        public: false
+
+    CoralMedia\Component\Printing\Api\PrintingBatchDataPersister:
+        bind:
+            $decoratedDataPersister: '@api_platform.doctrine.orm.data_persister'
+
+    CoralMedia\Component\Printing\Api\PrintingBatchFileDataPersister:
+        bind:
+            $decoratedDataPersister: '@api_platform.doctrine.orm.data_persister'
