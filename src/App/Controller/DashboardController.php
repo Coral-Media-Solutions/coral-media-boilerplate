@@ -7,7 +7,11 @@ use App\Controller\Product\ProductCategoryCrudController;
 use App\Controller\Product\ProductCrudController;
 use App\Controller\Security\UserCrudController;
 use App\Controller\Security\UserProfileController;
+use CoralMedia\Bundle\PrintingBundle\Controller\Crud\PrintingBatchCrudController;
+use CoralMedia\Bundle\PrintingBundle\Controller\Crud\PrintingBatchFileCrudController;
 use CoralMedia\Bundle\PrintingBundle\Entity\Printer;
+use CoralMedia\Bundle\PrintingBundle\Entity\PrintingBatch;
+use CoralMedia\Bundle\PrintingBundle\Entity\PrintingBatchFile;
 use CoralMedia\Bundle\ProductBundle\Entity\Product;
 use CoralMedia\Bundle\ProductBundle\Entity\ProductCategory;
 use CoralMedia\Bundle\SecurityBundle\Entity\User;
@@ -62,6 +66,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Inventory', 'fas fa-warehouse')->setSubItems(
             [
 
+            ]
+        );
+
+        yield MenuItem::subMenu('Printing', 'fas fa-print')->setSubItems(
+            [
+                MenuItem::linkToCrud('Batches', 'fas fa-archive', PrintingBatch::class)
+                    ->setController(PrintingBatchCrudController::class),
+                MenuItem::linkToCrud('Batch Files', 'fas fa-file-pdf', PrintingBatchFile::class)
+                    ->setController(PrintingBatchFileCrudController::class)
             ]
         );
 

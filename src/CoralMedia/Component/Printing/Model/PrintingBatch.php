@@ -32,6 +32,14 @@ abstract class PrintingBatch implements PrintingBatchInterface
     protected $pdfFile;
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getReference();
+    }
+
+    /**
      * @return int|null
      */
     public function getId(): ?int

@@ -32,6 +32,14 @@ abstract class PrintingBatchFile implements PrintingBatchFileInterface
     protected $filePath;
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getFilePath();
+    }
+
+    /**
      * @return int|null
      */
     public function getId(): ?int
@@ -84,10 +92,10 @@ abstract class PrintingBatchFile implements PrintingBatchFileInterface
     }
 
     /**
-     * @param string $filePath
+     * @param string|null $filePath
      * @return PrintingBatchFile
      */
-    public function setFilePath(string $filePath): PrintingBatchFile
+    public function setFilePath(?string $filePath): PrintingBatchFile
     {
         $this->filePath = $filePath;
         return $this;
