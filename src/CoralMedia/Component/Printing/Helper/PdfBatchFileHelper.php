@@ -63,6 +63,7 @@ class PdfBatchFileHelper
         }
 
         $html =  $this->twigEnvironment->render($template, [
+            'batchHeader' => $batchedOrders['batchHeader'],
             'batchNumber' => $batchedOrders['batchNumber'],
             'productSKU' => $batchedOrders ['productSKU'],
             'creationDate' => $batchedOrders['creationDate'],
@@ -105,8 +106,8 @@ class PdfBatchFileHelper
         $batchNumber = $batchInfo['batchNumber'];
 
         $batchedOrders ['batchNumber'] = $batchNumber;
+        $batchedOrders ['batchHeader'] = $batchInfo['batchHeader'];
         $batchedOrders ['productSKU'] = $batchInfo['productSKU'];
-
 
         $items = [];
         $i = 0;

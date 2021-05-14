@@ -3,17 +3,19 @@
 {% block body %}
     {% for key, item in items %}
     <table style="
-        border-right: solid 1px #ddd; width: 56in; height: 66in;
+        border-right: solid 1px #ddd; width: 56in; height: 62in;
         {% if loop.first == false %}
-                margin-top: 1in;
+                margin-top: 0.1in;
         {% endif %}
     ">
         <tbody>
         <tr>
-            <td style="padding: 0.2in;">
-                <strong style="font-size: 300%;color:red;">{{ productSKU }}</strong>
-                <br>
+            <td style="padding: 0.1in 0.1in 0.1in 4in;">
+                <strong style="font-size: 300%;color:red;">{{ batchHeader }}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <strong  style="font-size: 200%;">{{ productSKU }}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong style="font-size: 300%;"> {{ creationDate|date('Y-m-d') }} </strong>
             </td>
             <td>
                 <div style="font-size: 120%;">
@@ -22,92 +24,39 @@
                     <strong> Order: </strong> {{ item.orderPo }}
                     <br>
                     <strong> Item: </strong> {{ item.itemId }}
-                    <br>
-                    <strong> Batch Date: </strong> {{ creationDate|date('Y-m-d H:m:s') }}
                 </div>
             </td>
-            <td style="padding: 0.2in; text-align: right;">
-                <strong style="font-size: 600%; color:black;">{{ key }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <strong style="font-size: 300%; color:black;">#{{ item.itemSerial }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td style="padding: 0.1in; text-align: right;">
+                <strong style="font-size: 600%; color:black;">&#8681;{{ key }}</strong>
             </td>
-            <td style="padding: 0.2in; text-align: right;">
+            <td style="padding: 0.1in  4in 0.1in 0.1in; text-align: right;">
                 <table>
                     <thead>
                         <tr>
                             <th>Batch</th>
-                            <th>Order</th>
-                            <th>Item</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><barcode code="{{ batchNumber }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
-                            <td><barcode code="{{ item.orderPo }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
-                            <td><barcode code="{{ item.itemId }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">{{ batchNumber }}</td>
-                            <td style="text-align: center;">{{ item.orderPo }}</td>
-                            <td style="text-align: center;">{{ item.itemId }}</td>
+                            <td style="text-align: center;">
+                                <span>{{ batchNumber }}</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>{{ batchNumber }}</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
         <tr>
-            <td style="padding-top: 1in; padding-bottom: 1in;" colspan="4" align="center">
+            <td style="padding-top: 0.1in; padding-bottom: 0.1in;" colspan="4" align="center">
                 <img src="{{ item.imageUrl }}">
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 0.2in;">
-                <strong style="font-size: 300%;color:red;">{{ productSKU }}</strong>
-                <br>
-                <strong  style="font-size: 200%;">{{ productSKU }}</strong>
-            </td>
-            <td>
-                <div style="font-size: 120%;">
-                    <strong> Batch: </strong> {{ batchNumber }}
-                    <br>
-                    <strong> Order: </strong> {{ item.orderPo }}
-                    <br>
-                    <strong> Item: </strong> {{ item.itemId }}
-                    <br>
-                    <strong> Batch Date: </strong> {{ creationDate|date('Y-m-d H:m:s') }}
-                </div>
-            </td>
-            <td style="padding: 0.2in; text-align: right;">
-                <strong style="font-size: 600%; color:black;">{{ key }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <strong style="font-size: 300%; color:black;">#{{ item.itemSerial }}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </td>
-            <td style="padding: 0.2in; text-align: right;">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Batch</th>
-                        <th>Order</th>
-                        <th>Item</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><barcode code="{{ batchNumber }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
-                        <td><barcode code="{{ item.orderPo }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
-                        <td><barcode code="{{ item.itemId }}" type="C39" size="1.2" height="0.8" text="1"></barcode></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;">{{ batchNumber }}</td>
-                        <td style="text-align: center;">{{ item.orderPo }}</td>
-                        <td style="text-align: center;">{{ item.itemId }}</td>
-                    </tr>
-                    </tbody>
-                </table>
             </td>
         </tr>
         </tbody>
     </table>
-{#        {% if loop.last == false %}#}
-{#            <pagebreak />#}
-{#        {% endif %}#}
     {% endfor %}
 {% endblock %}
