@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Printing;
+namespace CoralMedia\Bundle\PrintingBundle\Controller\Crud;
 
 use CoralMedia\Bundle\PrintingBundle\Entity\Printer;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;

@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Controller\Printing\PrinterCrudController;
 use App\Controller\Product\ProductCategoryCrudController;
 use App\Controller\Product\ProductCrudController;
 use App\Controller\Security\UserCrudController;
 use App\Controller\Security\UserProfileController;
+use CoralMedia\Bundle\PrintingBundle\Controller\Crud\PrinterCrudController;
 use CoralMedia\Bundle\PrintingBundle\Controller\Crud\PrintingBatchCrudController;
 use CoralMedia\Bundle\PrintingBundle\Controller\Crud\PrintingBatchFileCrudController;
 use CoralMedia\Bundle\PrintingBundle\Entity\Printer;
@@ -74,7 +74,9 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Batches', 'fas fa-archive', PrintingBatch::class)
                     ->setController(PrintingBatchCrudController::class),
                 MenuItem::linkToCrud('Batch Files', 'fas fa-file-pdf', PrintingBatchFile::class)
-                    ->setController(PrintingBatchFileCrudController::class)
+                    ->setController(PrintingBatchFileCrudController::class),
+                MenuItem::linkToCrud('Printers', 'fas fa-print', Printer::class)
+                    ->setController(PrinterCrudController::class),
             ]
         );
 
@@ -88,8 +90,6 @@ class DashboardController extends AbstractDashboardController
             [
                 MenuItem::linkToCrud('Users', 'fas fa-users', User::class)
                     ->setController(UserCrudController::class),
-                MenuItem::linkToCrud('Printers', 'fas fa-print', Printer::class)
-                    ->setController(PrinterCrudController::class),
             ]
         );
 
