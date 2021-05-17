@@ -2,6 +2,7 @@
 
 namespace CoralMedia\Component\Printing\Helper;
 
+use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -12,24 +13,48 @@ use Symfony\Component\HttpFoundation\Response;
 class ImagePlaceHolderHelper
 {
     /**
-     * @param int $width Width in pixels
-     * @param int $height Height in pixels
+     * @param $imageString
+     * @param $format
      * @return Response
      */
-    public function getResponse($width = 400, $height = 400): Response
+    public function getResponse($imageString, $format): Response
     {
-        $img = ImageCreate($width, $height);
-        $bg = imagecolorallocate($img, 128, 128, 128);
-        ImageFill($img, 0, 0, $bg);
-        ob_start();
-        imagepng($img);
-        $imageString = ob_get_clean();
-        $headers= array(
-            'Content-type'=>'image/png',
+
+        $headers = array(
+            'Content-type'=>'image/' . $format,
             'Pragma'=>'no-cache',
             'Cache-Control'=>'no-cache'
         );
 
-        return new Response($imageString, Response::HTTP_OK, $headers);
+        return new Response(
+            $imageString, Response::HTTP_OK, $headers
+        );
+    }
+
+    /**
+     * @param int $width
+     * @param int $height
+     * @param int[] $background
+     * @param string $format
+     * @return false|string
+     */
+    public function createPlaceHolder($width = 400, $height = 400, $background = [128, 128, 128], $format = 'png')
+    {
+        $img = ImageCreate($width, $height);
+        list($red, $green, $blue) = $background;
+        $bg = imagecolorallocate($img, $red, $green, $blue);
+        ImageFill($img, 0, 0, $bg);
+        ob_start();
+        if ($format === 'png') {
+            imagepng($img);
+        } elseif ($format === 'jpg') {
+            imagejpeg($img);
+        } else {
+            throw new InvalidArgumentException(
+                'Filetype not supported. Valid formats are \'jpg\' and \'png\'.'
+            );
+        }
+
+        return ob_get_clean();
     }
 }
