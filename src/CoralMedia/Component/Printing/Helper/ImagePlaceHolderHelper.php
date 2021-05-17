@@ -17,7 +17,7 @@ class ImagePlaceHolderHelper
      * @param $format
      * @return Response
      */
-    public function getResponse($imageString, $format): Response
+    public function getResponse($imageString, $format = 'png'): Response
     {
 
         $headers = array(

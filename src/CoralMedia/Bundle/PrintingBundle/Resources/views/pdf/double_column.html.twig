@@ -58,7 +58,13 @@
                     </tr>
                     <tr>
                         <td style="padding-top: 1in; padding-bottom: 1in;" colspan="4" align="center">
-                            <img src="{{ sub.imageUrl }}">
+                            {% if sub.imageUrl != 'placeholder' %}
+                                <img src="{{ sub.imageUrl }}">
+                            {% else %}
+{#                                <img src="https://via.placeholder.com/3350x4350/fff.png">#}
+                                <img src="{{ asset('uploads/images/blank/placeholder_30_40.png') }}">
+{#                                <img src="{{ asset('printing/image/placeholder_30_40') }}">#}
+                            {% endif %}
                         </td>
                     </tr>
                     </tbody>

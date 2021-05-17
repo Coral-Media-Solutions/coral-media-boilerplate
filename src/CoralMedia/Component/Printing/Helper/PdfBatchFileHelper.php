@@ -22,6 +22,8 @@ class PdfBatchFileHelper
 
     protected $twigEnvironment;
 
+    public const IMG_PLACEHOLDER = 'placeholder';
+
     public function __construct(Environment $twigEnvironment)
     {
         $this->twigEnvironment = $twigEnvironment;
@@ -134,6 +136,19 @@ class PdfBatchFileHelper
         $batchedOrders['creationDate'] = new \DateTime();
         $batchedOrders['totalItems'] = count($items);
 
+        if ($columnLayout === 2 && $doubleSided === true && ((count($items)/2) % 2) != 0) {
+            for ($i = 0; $i < 2; $i++) {
+                $items[] = [
+                    'itemId' => '',
+                    'itemSerial' => '',
+                    'orderId' => '',
+                    'orderPo' => '',
+                    'batchNumber' => '',
+                    'imageUrl' => self::IMG_PLACEHOLDER
+                ];
+            }
+        }
+
         if($doubleSided === false){
             $this->batchSingleSidedOrders($batchedOrders, $items, $columnLayout);
         } else {
@@ -223,5 +238,10 @@ class PdfBatchFileHelper
                 sprintf("Unsupported column layout value '%d'", $columnLayout)
             );
         }
+    }
+
+    protected function getVirtualItem()
+    {
+
     }
 }
