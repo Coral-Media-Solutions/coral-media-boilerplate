@@ -11,6 +11,6 @@ vich_uploader:
         media_object:
             namer:
                 service: Vich\UploaderBundle\Naming\HashNamer
-                options: { algorithm: 'sha256', length: 8 }
+                options: { algorithm: 'sha256', length: 5 }
             uri_prefix: uploads/media
             upload_destination: '%kernel.project_dir%/public/uploads/media'
